@@ -1,0 +1,110 @@
+const dailyMessages = [
+    "You light up every room you enter, and my heart skips a beat every time I see your smile.",
+    "Today is going to be amazing because you're in it. You have the power to make any day beautiful.",
+    "Remember that you are loved beyond measure, cherished beyond words, and valued beyond compare.",
+    "Your kindness makes the world a better place. Thank you for being the incredible person you are.",
+    "Every morning I wake up grateful that you're in my life. You are my greatest blessing.",
+    "You are stronger than you know, braver than you feel, and more loved than you can imagine.",
+    "Your dreams are valid, your goals are achievable, and your heart is pure gold.",
+    "The world is lucky to have someone as wonderful as you. Keep shining, beautiful soul."
+];
+
+const letters = {
+    happy: {
+        title: "When You're Happy",
+        content: `My Beautiful Love,
+
+Seeing you happy is my favorite sight in the entire world! Your joy is contagious, and it fills my heart with such warmth and love.
+
+I love how your eyes sparkle when you laugh, how your whole face lights up, and how your happiness seems to make everything around you brighter. You have this amazing ability to find joy in the smallest things, and it's one of the million reasons I adore you.
+
+Keep celebrating every moment of happiness, no matter how big or small. You deserve all the joy in the world, and I'm so grateful I get to witness your beautiful smile.
+
+Dance, laugh, sing, and be your amazing self. I'm here cheering you on every step of the way!
+
+With all my love and celebration,
+Your biggest fan 💕`
+    },
+    sad: {
+        title: "When You're Sad",
+        content: `My Precious Heart,
+
+I wish I could wrap you in the biggest, warmest hug right now and hold you until all the sadness melts away. It breaks my heart to know you're hurting, but I want you to know that it's okay to feel sad sometimes.
+
+You don't have to be strong all the time. You don't have to have it all figured out. It's okay to cry, to feel overwhelmed, to need a moment to just be.
+
+Please remember that this feeling is temporary. You have overcome every difficult day so far, and you will get through this one too. You are so much stronger and more resilient than you know.
+
+I'm here for you, always. Whether you need someone to listen, a shoulder to cry on, or just someone to sit with you in silence. You are never alone in this.
+
+You are loved, you are valued, and you are going to be okay.
+
+With endless love and support,
+Your safe place ❤️`
+    },
+    stressed: {
+        title: "When You're Stressed",
+        content: `My Sweet Angel,
+
+Take a deep breath with me. In... and out. You're doing so much better than you think you are.
+
+I know everything feels overwhelming right now, like there's too much to do and not enough time. But let me remind you of something: you are capable of amazing things. You've handled tough situations before, and you'll handle this one too.
+
+It's okay to take things one step at a time. It's okay to ask for help. It's okay to take a break and breathe.
+
+Remember to drink some water, eat something nourishing, and be gentle with yourself. You don't have to be perfect. You just have to be you, and that's more than enough.
+
+I believe in you completely. You've got this, and I've got you.
+
+Sending you calm and peace,
+Your stress-reliever 🌸`
+    },
+    missing: {
+        title: "When You Miss Me",
+        content: `My Heart, My Home,
+
+Distance means nothing when someone means everything. Even when we're apart, you're always with me - in my thoughts, in my heart, in every beat of my pulse.
+
+I miss you too, more than words could ever express. I miss your laugh, your voice, the way you look at me like I'm the only person in the world. I miss our conversations, our inside jokes, and the comfortable silence we share.
+
+But here's what I want you to remember: every moment we're apart is just making our reunion that much sweeter. I'm counting down the minutes until I can hold you again, until I can see your beautiful face and tell you in person how much I love you.
+
+Until then, look at the stars and know I'm looking at them too. Feel the breeze and know it carries my love to you. You are always in my heart, no matter the distance.
+
+I love you to the moon and back,
+Forever yours 💫`
+    }
+};
+
+function generateNewMessage() {
+    const messageElement = document.getElementById('daily-message');
+    const randomMessage = dailyMessages[Math.floor(Math.random() * dailyMessages.length)];
+    
+    messageElement.style.opacity = '0';
+    setTimeout(() => {
+        messageElement.textContent = randomMessage;
+        messageElement.style.opacity = '1';
+    }, 300);
+}
+
+function selectMood(mood) {
+    const responses = {
+        amazing: "That's wonderful! Your happiness fills my heart with joy. Keep shining, beautiful! ✨",
+        happy: "I love seeing you happy! Your smile is my favorite thing in the world. 😊",
+        okay: "That's perfectly fine. Some days are just okay, and that's completely normal. You're still amazing! 💕",
+        tired: "Rest up, my love. Take care of yourself and get some well-deserved rest. 😴",
+        sad: "I wish I could hug you right now. Remember that this feeling will pass, and I'm here for you always. 💙"
+    };
+    
+    document.getElementById('mood-response').innerHTML = `
+        <div class="mood-response-message">
+            <p>${responses[mood]}</p>
+        </div>
+    `;
+    
+    // Highlight selected mood
+    document.querySelectorAll('.mood-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+    event.target.closest('.mood-option').classList.add('selected');
+}

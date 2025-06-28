@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
+        />
+        <title>About Her</title>
+
+        <!-- PWA Meta Tags -->
+        <meta name="theme-color" content="#ff6b9d" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="Love App" />
+
+        <!-- iOS Meta Tags -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Love App" />
+        <meta name="format-detection" content="telephone=no" />
+
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="manifest.json" />
+
+        <!-- Bootstrap 5 CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+
+        <!-- Font Awesome Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+        <!-- AOS Animation Library -->
+        <link
+            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+            rel="stylesheet"
+        />
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav
+            class="navbar navbar-expand-lg navbar-light fixed-top romantic-nav"
+        >
+            <div class="container">
+                <a class="navbar-brand romantic-brand" href="index.html">
+                    <i class="fas fa-heart"></i> 14344
+                </a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="why-i-love-you.html"
+                                >Why I Love You</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="about-her.html"
+                                >About Her</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="favorites.html"
+                                >Favorites</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="food-memories.html"
+                                >Food Places</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="photo-gallery.html"
+                                >Memories</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="period-tracker.html"
+                                >Period Tracker</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="journal.html">Journal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="chat.html">Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="apology.html">Apology</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid py-5 mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <div class="text-center mb-5" data-aos="fade-down">
+                        <h1 class="romantic-title">About Darling 💕</h1>
+                        <p class="romantic-subtitle">
+                            Everything about my beautiful girl
+                        </p>
+                    </div>
+
+                    <!-- Desktop/Mobile Responsive Layout -->
+                    <div class="row">
+                        <!-- Profile Photo & Basic Info -->
+                        <div class="col-lg-4 mb-4">
+                            <div
+                                class="romantic-card profile-card"
+                                data-aos="fade-right"
+                            >
+                                <div class="profile-basic-info">
+                                    <div class="basic-detail">
+                                        <i class="fas fa-birthday-cake"></i>
+                                        <span>Born November 24, 2004</span>
+                                    </div>
+                                    <div class="basic-detail">
+                                        <i class="fas fa-clock"></i>
+                                        <span>11:50 AM</span>
+                                    </div>
+                                    <div class="basic-detail">
+                                        <i class="fas fa-tint"></i>
+                                        <span>Blood Group: O+</span>
+                                    </div>
+                                    <div class="basic-detail">
+                                        <i class="fas fa-eye"></i>
+                                        <span>Vision: L 2.75, R 2.26</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Content Area -->
+                        <div class="col-lg-8">
+                            <!-- Password Section -->
+                            <div id="password-section" class="mb-4 text-center">
+                                <input
+                                    type="password"
+                                    id="sensitive-password"
+                                    placeholder="Enter password"
+                                    class="form-control mb-2 mx-auto"
+                                    style="max-width: 250px"
+                                />
+                                <button
+                                    onclick="revealSensitiveInfo()"
+                                    class="btn btn-sm btn-danger"
+                                >
+                                    Unlock
+                                </button>
+                            </div>
+                        </div>
+
+                            <!-- Clothing Sizes -->
+                            <div class="romantic-card mb-4" data-aos="fade-up">
+                                <div class="card-header">
+                                    <h3>
+                                        <i class="fas fa-tshirt"></i> Clothing
+                                        Sizes
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">👗</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Waist Size</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >26</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">👚</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Top Size</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >XS</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">🧥</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Jacket Size</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >Small or Medium</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Bra Size Block -->
+                                        <div
+                                            class="col-md-6 mb-3 sensitive-content"
+                                            style="display: none"
+                                        >
+                                            <div class="size-item">
+                                                <div class="size-icon">👙</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Bra Size</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >32B</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Footwear Sizes -->
+                            <div
+                                class="romantic-card mb-4"
+                                data-aos="fade-up"
+                                data-aos-delay="100"
+                            >
+                                <div class="card-header">
+                                    <h3>
+                                        <i class="fas fa-shoe-prints"></i>
+                                        Footwear Sizes
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">👠</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Shoe Size</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >7</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">👣</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Feet Size</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >38</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">👟</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Preferred
+                                                        Sneakers</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >Size 40</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Jewelry Sizes -->
+                            <div
+                                class="romantic-card mb-4"
+                                data-aos="fade-up"
+                                data-aos-delay="150"
+                            >
+                                <div class="card-header">
+                                    <h3>
+                                        <i class="fas fa-gem"></i> Jewelry Sizes
+                                        & Preferences
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">💍</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Index Finger Ring</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >Size 11 (Indian)</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">📿</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Preferred
+                                                        Necklaces</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >Silver Thin
+                                                        (Giva)</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">💎</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Diamond Cut</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >Square Cut</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="size-item">
+                                                <div class="size-icon">💙</div>
+                                                <div class="size-details">
+                                                    <span class="size-label"
+                                                        >Gemstone
+                                                        Preference</span
+                                                    >
+                                                    <span class="size-value"
+                                                        >Sapphire &
+                                                        Emeralds</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Special Jewelry Note -->
+                            <div
+                                class="romantic-card mb-4"
+                                data-aos="fade-up"
+                                data-aos-delay="200"
+                            >
+                                <div class="card-header">
+                                    <h3>
+                                        <i class="fas fa-heart"></i> Dream
+                                        Wedding Ring
+                                    </h3>
+                                </div>
+                                <div class="card-body text-center">
+                                    <div class="dream-ring-card">
+                                        <div class="ring-icon">💍</div>
+                                        <h4>Her Perfect Ring</h4>
+                                        <p>
+                                            <strong
+                                                >Little Blue-Tinted Heart-Shaped
+                                                Diamond</strong
+                                            >
+                                        </p>
+                                        <p>With initials engraved inside</p>
+                                        <small class="text-muted"
+                                            >The ring that will make her heart
+                                            skip a beat 💕</small
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Period Information -->
+                            <div
+                                class="romantic-card"
+                                data-aos="fade-up"
+                                data-aos-delay="250"
+                            >
+                                <div class="card-header">
+                                    <h3>
+                                        <i class="fas fa-calendar-week"></i>
+                                        Health Information
+                                    </h3>
+                                </div>
+                                <div
+                                    class="card-body sensitive-content"
+                                    style="display: none"
+                                >
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="health-item">
+                                                <div class="health-icon">
+                                                    🗓️
+                                                </div>
+                                                <div class="health-details">
+                                                    <span class="health-label"
+                                                        >Period Cycle</span
+                                                    >
+                                                    <span class="health-value"
+                                                        >26 days</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="health-item">
+                                                <div class="health-icon">
+                                                    📅
+                                                </div>
+                                                <div class="health-details">
+                                                    <span class="health-label"
+                                                        >Duration</span
+                                                    >
+                                                    <span class="health-value"
+                                                        >3 days</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <div class="health-item">
+                                                <div class="health-icon">
+                                                    🛍️
+                                                </div>
+                                                <div class="health-details">
+                                                    <span class="health-label"
+                                                        >Preferred Pads</span
+                                                    >
+                                                    <span class="health-value"
+                                                        >Stayfree XL (35
+                                                        rupees)</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden file input for photo upload -->
+        <input
+            type="file"
+            id="profilePhotoInput"
+            accept="image/*"
+            style="display: none"
+            onchange="handleProfilePhotoSelect(event)"
+        />
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- AOS Animation -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <!-- Storage System -->
+        <script src="js/storage.js"></script>
+
+        <!-- Authentication -->
+        <script src="js/auth.js"></script>
+
+        <!-- Main JS -->
+        <script src="js/main.js"></script>
+
+        <!-- PWA -->
+        <script src="js/pwa.js"></script>
+
+        <style>
+            .profile-card {
+                background: linear-gradient(135deg, #fff 0%, #fef9ff 100%);
+            }
+
+            .profile-photo-section {
+                text-align: center;
+                padding: 2rem 1rem 1rem;
+            }
+
+            .profile-photo-container {
+                position: relative;
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 4px solid var(--romantic-pink);
+                background: var(--romantic-light-pink);
+            }
+
+            .profile-photo-placeholder {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                color: var(--romantic-purple);
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+
+            .profile-photo-placeholder:hover {
+                transform: scale(1.05);
+            }
+
+            .profile-photo-placeholder i {
+                font-size: 4rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .upload-text {
+                font-size: 0.8rem;
+                margin: 0;
+                text-align: center;
+            }
+
+            .profile-photo-display {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .photo-actions {
+                margin-top: 1rem;
+                display: flex;
+                gap: 0.5rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .photo-btn {
+                background: var(--romantic-gradient);
+                color: white;
+                border: none;
+                padding: 0.4rem 0.8rem;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+            }
+
+            .photo-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--romantic-shadow);
+            }
+
+            .remove-btn {
+                background: linear-gradient(45deg, #dc3545, #c82333);
+            }
+
+            .remove-btn:hover {
+                background: linear-gradient(45deg, #c82333, #bd2130);
+            }
+
+            .profile-basic-info {
+                padding: 1rem;
+                justify-items: left;
+            }
+
+            .profile-basic-info h3 {
+                font-family: "Dancing Script", cursive;
+                font-size: 2rem;
+                color: var(--romantic-purple);
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .basic-detail {
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            }
+
+            .basic-detail:last-child {
+                border-bottom: none;
+            }
+
+            .basic-detail i {
+                color: var(--romantic-pink);
+                width: 20px;
+                text-align: center;
+            }
+
+            .size-item,
+            .health-item {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 1rem;
+                background: var(--romantic-light-pink);
+                border-radius: 12px;
+                height: 100%;
+                transition: transform 0.3s ease;
+            }
+
+            .size-item:hover,
+            .health-item:hover {
+                transform: translateY(-3px);
+            }
+
+            .size-icon,
+            .health-icon {
+                font-size: 1.8rem;
+                width: 50px;
+                text-align: center;
+                flex-shrink: 0;
+            }
+
+            .size-details,
+            .health-details {
+                flex: 1;
+            }
+
+            .size-label,
+            .health-label {
+                display: block;
+                font-weight: 600;
+                color: var(--romantic-purple);
+                font-size: 0.9rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .size-value,
+            .health-value {
+                display: block;
+                color: #666;
+                font-size: 1rem;
+            }
+
+            .dream-ring-card {
+                background: linear-gradient(135deg, #ffeef5 0%, #f8f0ff 100%);
+                padding: 2rem;
+                border-radius: 20px;
+                border: 2px solid var(--romantic-pink);
+            }
+
+            .ring-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .dream-ring-card h4 {
+                color: var(--romantic-purple);
+                margin-bottom: 1rem;
+                font-family: "Dancing Script", cursive;
+                font-size: 1.8rem;
+            }
+
+            .dream-ring-card p {
+                color: var(--romantic-dark-pink);
+                margin-bottom: 0.5rem;
+                font-weight: 500;
+            }
+
+            #password-section {
+                max-width: 280px;
+                margin: 0 auto;
+                padding: 18px 20px;
+                text-align: center;
+                background: #fff0f6;
+                border: 1px solid #f3c6d3;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(243, 198, 211, 0.4);
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            @media (min-width: 992px) {
+                #password-section {
+                    margin-top: -30px;
+                    margin-left: -20px;
+                }
+            }
+
+            #password-section input[type="password"] {
+                width: 100%;
+                padding: 8px 10px;
+                font-size: 0.9rem;
+                border: 1.5px solid #f3c6d3;
+                border-radius: 10px;
+                box-sizing: border-box;
+                color: #6a4a60;
+                font-weight: 500;
+                transition: border-color 0.3s ease;
+            }
+
+            #password-section input[type="password"]:focus {
+                border-color: #d16ba5;
+                outline: none;
+                box-shadow: 0 0 8px #f7a1c1;
+            }
+
+            #password-section button {
+                width: 100%;
+                margin-top: 10px;
+                padding: 8px;
+                font-size: 0.9rem;
+                background-color: #d16ba5;
+                border: none;
+                border-radius: 10px;
+                color: white;
+                font-weight: 600;
+                cursor: pointer;
+                box-shadow: 0 2px 6px rgba(209, 107, 165, 0.6);
+                transition: background-color 0.3s ease;
+            }
+
+            #password-section button:hover {
+                background-color: #b2588b;
+            }
+
+            @media (max-width: 768px) {
+                .profile-photo-container {
+                    width: 120px;
+                    height: 120px;
+                }
+
+                .profile-photo-placeholder i {
+                    font-size: 3rem;
+                }
+
+                .size-item,
+                .health-item {
+                    padding: 0.8rem;
+                }
+
+                .size-icon,
+                .health-icon {
+                    font-size: 1.5rem;
+                    width: 40px;
+                }
+            }
+        </style>
+
+        <script>
+
+            document.addEventListener("DOMContentLoaded", function () {
+                // Initialize AOS
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                });
+
+                // Load saved photo on page load
+                loadSavedProfilePhoto();
+
+                // Add Enter key support for password input
+                const passwordInput = document.getElementById("sensitive-password");
+                if (passwordInput) {
+                    passwordInput.addEventListener("keypress", function (e) {
+                        if (e.key === "Enter") {
+                            revealSensitiveInfo();
+                        }
+                    });
+                }
+            });
+
+            function revealSensitiveInfo() {
+                const passwordInput = document.getElementById("sensitive-password");
+                const password = passwordInput.value.trim().toLowerCase();
+
+                const validPasswords = [
+                    "112404",
+                    "24112004",
+                    "24/11/2004",
+                    "24-11-2004",
+                    "2004-11-24"
+                ];
+
+                const unlockBtn = document.querySelector('#password-section button');
+                if (unlockBtn) {
+                    unlockBtn.disabled = true;
+                    setTimeout(() => unlockBtn.disabled = false, 1500);
+                }
+
+                if (password && validPasswords.includes(password)) {
+                    // Reveal sensitive content
+                    document.querySelectorAll(".sensitive-content").forEach((el) => {
+                        el.style.display = "block";
+                        el.scrollIntoView({ behavior: 'smooth' });
+                    });
+
+                    // Hide password section
+                    const passwordSection = document.getElementById("password-section");
+                    if (passwordSection) {
+                        passwordSection.style.display = "none";
+                    }
+
+                    // Success notification
+                    showNotification("Sensitive information unlocked", "success");
+                } else {
+                    if (password !== "") {
+                        showNotification("Incorrect password", "error");
+                    }
+
+                    passwordInput.value = "";
+                    passwordInput.focus();
+                }
+            }
+
+            function showNotification(message, type) {
+                const notification = document.createElement("div");
+                const isSuccess = type === "success";
+
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${isSuccess ? "#28a745" : "#dc3545"};
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                    z-index: 10000;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    display: flex;
+                    align-items: center;
+                `;
+
+                notification.innerHTML = `
+                    <i class="fas fa-${isSuccess ? "check" : "times"}-circle me-2"></i>
+                    ${message}
+                `;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+
+
+            function selectProfilePhoto() {
+                document.getElementById("profilePhotoInput").click();
+            }
+
+            function handleProfilePhotoSelect(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                if (!file.type.startsWith("image/")) {
+                    alert("Please select an image file.");
+                    return;
+                }
+
+                if (file.size > 5 * 1024 * 1024) {
+                    alert("Please select an image smaller than 5MB.");
+                    return;
+                }
+
+                const container = document.getElementById(
+                    "profilePhotoContainer",
+                );
+                container.classList.add("photo-loading");
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    displayProfilePhoto(e.target.result);
+                    saveProfilePhotoUrl(e.target.result);
+                    container.classList.remove("photo-loading");
+                };
+                reader.readAsDataURL(file);
+
+                event.target.value = "";
+            }
+
+            function displayProfilePhoto(photoUrl) {
+                const placeholder = document.getElementById("photoPlaceholder");
+                const photoImg = document.getElementById("profilePhoto");
+                const removeBtn = document.getElementById("removePhotoBtn");
+
+                placeholder.style.display = "none";
+                photoImg.src = photoUrl;
+                photoImg.style.display = "block";
+                removeBtn.style.display = "inline-flex";
+            }
+
+            function removeProfilePhoto() {
+                if (!confirm("Are you sure you want to remove this photo?")) {
+                    return;
+                }
+
+                const placeholder = document.getElementById("photoPlaceholder");
+                const photoImg = document.getElementById("profilePhoto");
+                const removeBtn = document.getElementById("removePhotoBtn");
+
+                placeholder.style.display = "flex";
+                photoImg.style.display = "none";
+                photoImg.src = "";
+                removeBtn.style.display = "none";
+
+                localStorage.removeItem("profilePhotoUrl");
+            }
+
+            function saveProfilePhotoUrl(url) {
+                localStorage.setItem("profilePhotoUrl", url);
+            }
+
+            function loadSavedProfilePhoto() {
+                const savedUrl = localStorage.getItem("profilePhotoUrl");
+                if (savedUrl) {
+                    displayProfilePhoto(savedUrl);
+                }
+            }
+        </script>
+    </body>
+</html>

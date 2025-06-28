@@ -1,0 +1,635 @@
+
+{% extends "base.html" %}
+
+{% block title %}Your Beautiful Memories{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="text-center mb-5" data-aos="fade-down">
+        <h1 class="romantic-title">
+            <i class="fas fa-camera text-romantic-pink"></i>
+            Your Memory Catalog
+        </h1>
+        <p class="lead romantic-subtitle">A beautiful collection of our precious moments</p>
+    </div>
+    
+    <!-- Memory Catalog Section -->
+    {% if images %}
+    <div class="memories-catalog mb-5" data-aos="fade-up">
+        <div class="catalog-header text-center mb-4">
+            <h3 class="catalog-title">
+                <i class="fas fa-photo-video"></i>
+                Memory Gallery
+                <span class="memory-count">({{ images|length }} memories)</span>
+            </h3>
+        </div>
+        
+        <!-- Catalog Grid -->
+        <div class="catalog-grid">
+            {% for image in images %}
+            <div class="memory-catalog-item" data-aos="zoom-in" data-aos-delay="{{ loop.index0 * 100 }}">
+                <div class="memory-card">
+                    <div class="memory-image-wrapper">
+                        <img src="{{ url_for('static', filename='uploads/' + image) }}" 
+                             alt="Beautiful memory" 
+                             class="catalog-image"
+                             onclick="openMemoryLightbox('{{ url_for('static', filename='uploads/' + image) }}', '{{ image }}')">
+                        <div class="memory-overlay">
+                            <div class="memory-actions">
+                                <button class="action-btn view-btn" 
+                                        onclick="openMemoryLightbox('{{ url_for('static', filename='uploads/' + image) }}', '{{ image }}')">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                                <button class="action-btn delete-btn" 
+                                        onclick="deleteMemory('{{ image }}')">
+                                    <i class="fas fa-heart-broken"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memory-info">
+                        <div class="memory-date">
+                            <i class="fas fa-calendar-heart"></i>
+                            {% set dt = image.split('_')[0] + image.split('_')[1] if '_' in image else None %}
+                            {{ dt[:4] ~ '-' ~ dt[4:6] ~ '-' ~ dt[6:8] ~ ' ' ~ dt[8:10] ~ ':' ~ dt[10:12] if dt else 'Beautiful moment' }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="empty-catalog mb-5" data-aos="fade-up">
+        <div class="empty-catalog-card">
+            <div class="empty-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+            <h3>Our Memory Catalog Awaits</h3>
+            <p>Start building Your beautiful collection of memories together</p>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Upload Section -->
+    <div class="upload-section" data-aos="fade-up" data-aos-delay="200">
+        <div class="upload-container">
+            <div class="upload-header text-center mb-4">
+                <h3 class="upload-title">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    Add New Memory
+                </h3>
+                <p class="upload-subtitle">Share another beautiful moment with me</p>
+            </div>
+            
+            <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+                <div class="upload-area">
+                    <div class="file-drop-zone" id="fileDropZone">
+                        <input type="file" name="image" id="imageInput" accept="image/*" required class="file-input">
+                        <div class="drop-content">
+                            <div class="upload-icon">
+                                <i class="fas fa-images"></i>
+                            </div>
+                            <h4>Choose a beautiful photo</h4>
+                            <p>or drag and drop it here</p>
+                            <button type="button" class="btn romantic-btn romantic-btn-outline" onclick="document.getElementById('imageInput').click()">
+                                <i class="fas fa-folder-open"></i> Browse Files
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="upload-preview" id="uploadPreview" style="display: none;">
+                        <div class="preview-image-container">
+                            <img id="previewImage" src="" alt="Preview">
+                            <button type="button" class="remove-preview" onclick="removePreview()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="preview-info">
+                            <input type="text" class="form-control memory-caption" placeholder="Add a sweet caption for this memory..." maxlength="100">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="upload-actions text-center mt-4">
+                    <button type="submit" class="btn romantic-btn romantic-btn-primary upload-btn" id="uploadBtn" disabled>
+                        <i class="fas fa-heart"></i> Save This Memory
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Memory Lightbox Modal -->
+<div class="memory-lightbox" id="memoryLightbox" style="display: none;">
+    <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+    <div class="lightbox-container">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Memory">
+            <div class="lightbox-info">
+                <h4 id="lightboxTitle">Your Beautiful Memory</h4>
+                <p id="lightboxDate">Captured with love</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// File handling
+const fileInput = document.getElementById('imageInput');
+const fileDropZone = document.getElementById('fileDropZone');
+const uploadPreview = document.getElementById('uploadPreview');
+const previewImage = document.getElementById('previewImage');
+const uploadBtn = document.getElementById('uploadBtn');
+
+// File input change
+fileInput.addEventListener('change', handleFileSelect);
+
+// Drag and drop
+fileDropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    fileDropZone.classList.add('drag-over');
+});
+
+fileDropZone.addEventListener('dragleave', () => {
+    fileDropZone.classList.remove('drag-over');
+});
+
+fileDropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    fileDropZone.classList.remove('drag-over');
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+        handleFile(files[0]);
+    }
+});
+
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    if (file) {
+        handleFile(file);
+    }
+}
+
+function handleFile(file) {
+    if (!file.type.startsWith('image/')) {
+        alert('Please select an image file');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        previewImage.src = e.target.result;
+        fileDropZone.style.display = 'none';
+        uploadPreview.style.display = 'block';
+        uploadBtn.disabled = false;
+    };
+    reader.readAsDataURL(file);
+}
+
+function removePreview() {
+    fileInput.value = '';
+    uploadPreview.style.display = 'none';
+    fileDropZone.style.display = 'block';
+    uploadBtn.disabled = true;
+}
+
+// Lightbox functionality
+function openMemoryLightbox(imageSrc, imageName) {
+    const lightbox = document.getElementById('memoryLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDate = document.getElementById('lightboxDate');
+    
+    lightboxImage.src = imageSrc;
+    
+    if (imageName.includes('_')) {
+        const parts = imageName.split('_');
+        lightboxDate.textContent = parts[0] || 'Beautiful moment';
+        lightboxTitle.textContent = parts[2] ? parts[2].replace(/\.(jpg|png|jpeg)$/i, '') : 'Your precious memory';
+    } else {
+        lightboxTitle.textContent = 'Your Beautiful Memory';
+        lightboxDate.textContent = 'Captured with love';
+    }
+    
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('memoryLightbox');
+    lightbox.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Delete memory
+function deleteMemory(filename) {
+    if (confirm('Are you sure you want to remove this precious memory? 💔')) {
+        window.location.href = `/delete_image/${filename}`;
+    }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('memoryLightbox');
+    if (lightbox.style.display === 'flex' && e.key === 'Escape') {
+        closeLightbox();
+    }
+});
+</script>
+
+<style>
+/* Memory Catalog Styles */
+.memories-catalog {
+    margin-bottom: 4rem;
+}
+
+.catalog-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--romantic-purple);
+    margin-bottom: 0.5rem;
+}
+
+.memory-count {
+    font-size: 1rem;
+    color: var(--romantic-pink);
+    font-weight: normal;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.memory-catalog-item {
+    position: relative;
+}
+
+.memory-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.15);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.memory-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(255, 107, 157, 0.25);
+}
+
+.memory-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.catalog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.memory-card:hover .catalog-image {
+    transform: scale(1.1);
+}
+
+.memory-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 107, 157, 0.9), rgba(196, 69, 105, 0.9));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.memory-card:hover .memory-overlay {
+    opacity: 1;
+}
+
+.memory-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--romantic-pink);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+.memory-info {
+    padding: 1.5rem;
+}
+
+.memory-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--romantic-pink);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.memory-title {
+    font-weight: 600;
+    color: var(--romantic-purple);
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+/* Upload Section Styles */
+.upload-section {
+    margin-top: 4rem;
+}
+
+.upload-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 3rem;
+    box-shadow: 0 15px 35px rgba(255, 107, 157, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.upload-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: var(--romantic-purple);
+    margin-bottom: 0.5rem;
+}
+
+.upload-subtitle {
+    color: var(--romantic-pink);
+    margin-bottom: 0;
+}
+
+.file-drop-zone {
+    border: 3px dashed var(--romantic-pink);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: var(--romantic-light-pink);
+    position: relative;
+}
+
+.file-drop-zone.drag-over {
+    border-color: var(--romantic-purple);
+    background: var(--romantic-lavender);
+    transform: scale(1.02);
+}
+
+.file-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.upload-icon {
+    font-size: 4rem;
+    color: var(--romantic-pink);
+    margin-bottom: 1rem;
+}
+
+.drop-content h4 {
+    color: var(--romantic-purple);
+    margin-bottom: 0.5rem;
+}
+
+.drop-content p {
+    color: var(--romantic-pink);
+    margin-bottom: 1.5rem;
+}
+
+.upload-preview {
+    background: var(--romantic-light-pink);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.preview-image-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.preview-image-container img {
+    max-width: 300px;
+    max-height: 200px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.remove-preview {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: var(--romantic-dark-pink);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.memory-caption {
+    border: 2px solid var(--romantic-pink);
+    border-radius: 15px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background: white;
+}
+
+.memory-caption:focus {
+    outline: none;
+    border-color: var(--romantic-purple);
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+}
+
+/* Empty Catalog */
+.empty-catalog-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    padding: 4rem 2rem;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(255, 107, 157, 0.1);
+}
+
+.empty-icon {
+    font-size: 5rem;
+    color: var(--romantic-pink);
+    margin-bottom: 1.5rem;
+}
+
+.empty-catalog-card h3 {
+    color: var(--romantic-purple);
+    margin-bottom: 1rem;
+}
+
+.empty-catalog-card p {
+    color: var(--romantic-pink);
+    font-size: 1.1rem;
+}
+
+/* Lightbox Styles */
+.memory-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.lightbox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.lightbox-container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10001;
+    transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background: var(--romantic-pink);
+    transform: scale(1.1);
+}
+
+.lightbox-content img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+}
+
+.lightbox-info {
+    padding: 2rem;
+    text-align: center;
+}
+
+.lightbox-info h4 {
+    color: var(--romantic-purple);
+    margin-bottom: 0.5rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+}
+
+.lightbox-info p {
+    color: var(--romantic-pink);
+    margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .upload-container {
+        padding: 2rem 1.5rem;
+    }
+    
+    .file-drop-zone {
+        padding: 2rem 1rem;
+    }
+    
+    .upload-icon {
+        font-size: 3rem;
+    }
+    
+    .lightbox-container {
+        margin: 1rem;
+    }
+    
+    .preview-image-container img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .memory-actions {
+        gap: 0.5rem;
+    }
+    
+    .action-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+</style>
+{% endblock %}

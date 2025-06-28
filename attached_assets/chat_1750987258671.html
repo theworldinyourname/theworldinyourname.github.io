@@ -1,0 +1,963 @@
+{% extends "base.html" %}
+
+{% block title %}Chat{% endblock %}
+
+{% block content %}
+<div class="whatsapp-container">
+    <!-- WhatsApp Background -->
+    <div class="whatsapp-background">
+        <svg class="bg-pattern" viewBox="0 0 100 100">
+            <defs>
+                <pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <text x="10" y="15" text-anchor="middle" font-size="12" fill="rgba(255,192,203,0.1)">💕</text>
+                </pattern>
+                <pattern id="paws" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse">
+                    <text x="12" y="18" text-anchor="middle" font-size="10" fill="rgba(255,182,193,0.08)">🐾</text>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hearts)"/>
+            <rect width="100%" height="100%" fill="url(#paws)"/>
+        </svg>
+    </div>
+
+    <!-- WhatsApp Header -->
+    <div class="whatsapp-header">
+        <div class="header-left">
+            <button class="back-btn" onclick="window.history.back()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="partner-avatar-container">
+                <div class="partner-avatar">
+                    <div class="partner-avatar-placeholder">
+                        {% if current_user.username == 'love1' %}
+                            <span class="avatar-letter">D</span>
+                        {% else %}
+                            <span class="avatar-letter">N</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="online-indicator" id="onlineIndicator"></div>
+            </div>
+            <div class="partner-info">
+                <div class="partner-name">
+                    {% if current_user.username == 'love1' %}
+                        Darling
+                    {% else %}
+                        Navu
+                    {% endif %}
+                </div>
+                <div class="partner-status" id="partnerStatus">online</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="header-btn" onclick="searchMessages()" title="Search">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="header-btn" onclick="toggleChatMenu()" title="Menu">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chat Menu Dropdown -->
+    <div class="chat-menu" id="chatMenu">
+        <div class="menu-item" onclick="viewContactInfo()">
+            <i class="fas fa-user"></i> Contact info
+        </div>
+        <div class="menu-item" onclick="selectMessages()">
+            <i class="fas fa-check-square"></i> Select messages
+        </div>
+        <div class="menu-item" onclick="muteNotifications()">
+            <i class="fas fa-bell-slash"></i> Mute notifications
+        </div>
+        <div class="menu-item" onclick="clearChat()">
+            <i class="fas fa-trash"></i> Clear chat
+        </div>
+        <div class="menu-item" onclick="exportChat()">
+            <i class="fas fa-download"></i> Export chat
+        </div>
+        <div class="menu-item" onclick="toggleSettings()">
+            <i class="fas fa-cog"></i> Settings
+        </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <button onclick="toggleSettings()"><i class="fas fa-times"></i></button>
+            <h3>Chat Settings</h3>
+        </div>
+        <div class="settings-content">
+            <div class="setting-group">
+                <h4>Theme</h4>
+                <div class="theme-options">
+                    <button class="theme-btn active" data-theme="love" onclick="changeTheme('love')">Love</button>
+                    <button class="theme-btn" data-theme="dogo" onclick="changeTheme('dogo')">Dogo</button>
+                    <button class="theme-btn" data-theme="light" onclick="changeTheme('light')">Light</button>
+                    <button class="theme-btn" data-theme="dark" onclick="changeTheme('dark')">Dark</button>
+                </div>
+            </div>
+            <div class="setting-group">
+                <h4>Background</h4>
+                <label class="setting-toggle">
+                    <input type="checkbox" id="backgroundToggle" checked onchange="toggleBackground()">
+                    <span>Show background pattern</span>
+                </label>
+            </div>
+            <div class="setting-group">
+                <h4>Sounds</h4>
+                <label class="setting-toggle">
+                    <input type="checkbox" id="soundToggle" checked onchange="toggleSounds()">
+                    <span>Message sounds</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Typing Indicator -->
+    <div class="typing-indicator" id="typingIndicator">
+        <div class="typing-message">
+            <div class="partner-avatar-small">
+                <div class="typing-avatar-placeholder">
+                    {% if current_user.username == 'love1' %}
+                        <span class="avatar-letter-small">D</span>
+                    {% else %}
+                        <span class="avatar-letter-small">N</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="typing-bubble">
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages Container -->
+    <div class="messages-container" id="messagesContainer">
+        <div class="date-divider" id="todayDivider">
+            <span>Today</span>
+        </div>
+        <!-- Messages will be loaded here -->
+    </div>
+
+    <!-- Message Input -->
+    <div class="message-input-container">
+        <div class="input-row">
+            <button class="attach-btn" onclick="toggleAttachMenu()">
+                <i class="fas fa-plus"></i>
+            </button>
+            <div class="message-input-wrapper">
+                <div class="message-input" 
+                     contenteditable="true" 
+                     id="messageInput" 
+                     placeholder="Type a message"
+                     onkeydown="handleInputKeydown(event)"
+                     oninput="handleTyping()"></div>
+                <button class="emoji-btn" onclick="toggleEmojiPicker()">
+                    <i class="fas fa-smile"></i>
+                </button>
+            </div>
+            <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+            <button class="voice-btn" id="voiceBtn" style="display: none;" onclick="toggleVoiceRecording()">
+                <i class="fas fa-microphone"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Attachment Menu -->
+    <div class="attach-menu" id="attachMenu">
+        <div class="attach-option" onclick="selectFile('image')">
+            <div class="attach-icon camera">
+                <i class="fas fa-camera"></i>
+            </div>
+            <span>Camera</span>
+        </div>
+        <div class="attach-option" onclick="selectFile('image')">
+            <div class="attach-icon gallery">
+                <i class="fas fa-images"></i>
+            </div>
+            <span>Gallery</span>
+        </div>
+        <div class="attach-option" onclick="selectFile('video')">
+            <div class="attach-icon video">
+                <i class="fas fa-video"></i>
+            </div>
+            <span>Video</span>
+        </div>
+    </div>
+
+    <!-- Emoji Picker -->
+    <div class="emoji-picker" id="emojiPicker">
+        <div class="emoji-categories">
+            <button class="emoji-cat active" onclick="showEmojiCategory('smileys')">😊</button>
+            <button class="emoji-cat" onclick="showEmojiCategory('hearts')">❤️</button>
+            <button class="emoji-cat" onclick="showEmojiCategory('animals')">🐶</button>
+            <button class="emoji-cat" onclick="showEmojiCategory('food')">🍕</button>
+        </div>
+        <div class="emoji-grid" id="emojiGrid">
+            <!-- Emojis will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Hidden file input -->
+    <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelect(event)" accept="image/*,video/*,audio/*">
+    
+    <!-- Link enhanced CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat-enhancements.css') }}">
+</div>
+
+<style>
+/* WhatsApp Container */
+.whatsapp-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #e5ddd5;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+/* Background Pattern */
+.whatsapp-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.bg-pattern {
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+/* Header */
+.whatsapp-header {
+    background: #075e54;
+    color: white;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    z-index: 10;
+    position: relative;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.partner-avatar-container {
+    position: relative;
+}
+
+.partner-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.partner-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-letter {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.typing-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-letter-small {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.online-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: #4fc3f7;
+    border: 2px solid white;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.partner-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.partner-name {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.partner-status {
+    font-size: 13px;
+    opacity: 0.8;
+    color: #fff;
+}
+
+.header-right {
+    display: flex;
+    gap: 8px;
+}
+
+.header-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.header-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Chat Menu */
+.chat-menu {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+    display: none;
+    z-index: 20;
+    min-width: 200px;
+}
+
+.menu-item {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.menu-item:hover {
+    background: #f5f5f5;
+}
+
+.menu-item i {
+    width: 20px;
+    color: #54656f;
+}
+
+/* Settings Panel */
+.settings-panel {
+    position: absolute;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 15;
+}
+
+.settings-panel.open {
+    right: 0;
+}
+
+.settings-header {
+    background: #075e54;
+    color: white;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.settings-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.settings-content {
+    padding: 20px;
+}
+
+.setting-group {
+    margin-bottom: 24px;
+}
+
+.setting-group h4 {
+    margin: 0 0 12px 0;
+    color: #075e54;
+}
+
+.theme-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.theme-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.theme-btn.active {
+    background: #075e54;
+    color: white;
+    border-color: #075e54;
+}
+
+.setting-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Messages Container */
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 16px;
+    position: relative;
+    z-index: 5;
+}
+
+.date-divider {
+    text-align: center;
+    margin: 12px 0;
+}
+
+.date-divider span {
+    background: rgba(255,255,255,0.9);
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #54656f;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Message Bubble */
+.message-bubble {
+    margin: 4px 0;
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.message-bubble.sent {
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.message-bubble.received {
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.message-content {
+    max-width: 75%;
+    background: white;
+    border-radius: 12px;
+    padding: 8px 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+    word-wrap: break-word;
+}
+
+.message-bubble.sent .message-content {
+    background: #dcf8c6;
+    border-bottom-right-radius: 4px;
+    margin-left: auto;
+}
+
+.message-bubble.received .message-content {
+    background: white;
+    border-bottom-left-radius: 4px;
+    margin-right: auto;
+}
+
+.message-text {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.message-meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    font-size: 11px;
+    color: #667781;
+    margin-top: 4px;
+}
+
+.message-time {
+    white-space: nowrap;
+}
+
+.message-status {
+    display: flex;
+    align-items: center;
+}
+
+/* Message Status Ticks - styled in chat-enhancements.css */
+
+/* Message Reactions */
+.message-reactions {
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    background: white;
+    border-radius: 12px;
+    padding: 2px 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    font-size: 12px;
+    display: none;
+}
+
+.message-reactions.show {
+    display: block;
+}
+
+/* Received Message Avatar */
+.message-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 8px;
+    align-self: flex-end;
+    overflow: hidden;
+}
+
+.message-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    padding: 8px 16px;
+    position: relative;
+    z-index: 5;
+    display: none;
+}
+
+.typing-message {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.partner-avatar-small {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.partner-avatar-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.typing-bubble {
+    background: white;
+    border-radius: 12px;
+    padding: 8px 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.typing-dots {
+    display: flex;
+    gap: 3px;
+}
+
+.typing-dots span {
+    width: 6px;
+    height: 6px;
+    background: #9e9e9e;
+    border-radius: 50%;
+    animation: typing 1.5s infinite;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+}
+
+/* Message Input */
+.message-input-container {
+    background: #f0f0f0;
+    padding: 8px;
+    position: relative;
+    z-index: 10;
+}
+
+.input-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.attach-btn {
+    background: #075e54;
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.attach-btn:hover {
+    background: #054d44;
+}
+
+.message-input-wrapper {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-end;
+    min-height: 40px;
+    max-height: 120px;
+}
+
+.message-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.4;
+    max-height: 100px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.message-input:empty::before {
+    content: attr(placeholder);
+    color: #999;
+}
+
+.emoji-btn {
+    background: none;
+    border: none;
+    color: #54656f;
+    font-size: 20px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.send-btn, .voice-btn {
+    background: #075e54;
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.send-btn:hover, .voice-btn:hover {
+    background: #054d44;
+}
+
+/* Attachment Menu */
+.attach-menu {
+    position: absolute;
+    bottom: 60px;
+    left: 16px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 8px;
+    display: none;
+    z-index: 20;
+}
+
+.attach-menu.show {
+    display: block;
+}
+
+.attach-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s;
+    min-width: 80px;
+}
+
+.attach-option:hover {
+    background: #f5f5f5;
+}
+
+.attach-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    color: white;
+    font-size: 18px;
+}
+
+.attach-icon.camera {
+    background: #ff5722;
+}
+
+.attach-icon.gallery {
+    background: #9c27b0;
+}
+
+.attach-icon.video {
+    background: #3f51b5;
+}
+
+.attach-option span {
+    font-size: 12px;
+    color: #54656f;
+}
+
+/* Emoji Picker */
+.emoji-picker {
+    position: absolute;
+    bottom: 60px;
+    right: 16px;
+    width: 320px;
+    height: 300px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: none;
+    z-index: 20;
+}
+
+.emoji-picker.show {
+    display: block;
+}
+
+.emoji-categories {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 8px;
+}
+
+.emoji-cat {
+    background: none;
+    border: none;
+    font-size: 20px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.emoji-cat:hover, .emoji-cat.active {
+    background: #f5f5f5;
+}
+
+.emoji-grid {
+    padding: 12px;
+    height: 240px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+}
+
+.emoji-item {
+    font-size: 20px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.emoji-item:hover {
+    background: #f5f5f5;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .emoji-picker {
+        width: 280px;
+        right: 8px;
+    }
+
+    .attach-menu {
+        left: 8px;
+    }
+
+    .settings-panel {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+/* Dark Theme */
+.whatsapp-container.dark {
+    background: #0b141a;
+}
+
+.dark .whatsapp-header {
+    background: #2a2f32;
+}
+
+.dark .message-content {
+    background: #262d31;
+    color: #e9edef;
+}
+
+.dark .message-bubble.sent .message-content {
+    background: #005c4b;
+}
+
+.dark .message-input-wrapper {
+    background: #2a2f32;
+}
+
+.dark .message-input {
+    background: #2a2f32;
+    color: #e9edef;
+}
+
+/* Animations */
+.message-bubble {
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+
+<script>
+// Set global variables for main.js
+window.currentUserId = {{ current_user.id }};
+window.currentUsername = '{{ current_user.username }}';
+
+// Chat will be initialized by main.js
+</script>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    window.currentUserId = {{ current_user.id }};
+</script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

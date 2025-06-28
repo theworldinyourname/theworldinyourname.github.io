@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
+        />
+        <title>Period Tracker</title>
+
+        <!-- PWA Meta Tags -->
+        <meta name="theme-color" content="#ff6b9d" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="Love App" />
+
+        <!-- iOS Meta Tags -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Love App" />
+        <meta name="format-detection" content="telephone=no" />
+
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="manifest.json" />
+
+        <!-- Bootstrap 5 CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+
+        <!-- Font Awesome Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+        <!-- AOS Animation Library -->
+        <link
+            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+            rel="stylesheet"
+        />
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav
+            class="navbar navbar-expand-lg navbar-light fixed-top romantic-nav"
+        >
+            <div class="container">
+                <a class="navbar-brand romantic-brand" href="index.html">
+                    <i class="fas fa-heart"></i> 14344
+                </a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="why-i-love-you.html"
+                                >Why I Love You</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about-her.html"
+                                >About Her</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="favorites.html"
+                                >Favorites</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="food-memories.html"
+                                >Food Places</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="photo-gallery.html"
+                                >Memories</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                href="period-tracker.html"
+                                >Period Tracker</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="journal.html">Journal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="chat.html">Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="apology.html">Apology</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container py-5 mt-5">
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h1 class="romantic-title">
+                    <i class="fas fa-calendar-heart text-romantic-pink"></i>
+                    Period Tracker
+                </h1>
+                <p class="lead romantic-subtitle">
+                    Keeping track of her health and wellness
+                </p>
+            </div>
+
+            <div class="row">
+                <!-- Current Status -->
+                <div class="col-lg-4 mb-4">
+                    <div class="romantic-card" data-aos="fade-right">
+                        <div class="card-header text-center">
+                            <h3><i class="fas fa-tint"></i> Current Status</h3>
+                        </div>
+                        <div class="card-body text-center">
+                            <div id="currentStatus" class="status-display">
+                                <div class="status-icon">💖</div>
+                                <div class="status-text">Loading...</div>
+                                <div class="status-days"></div>
+                            </div>
+
+                            <div class="mt-4">
+                                <button
+                                    class="btn romantic-btn romantic-btn-primary mb-2"
+                                    onclick="markPeriodStart()"
+                                >
+                                    <i class="fas fa-circle"></i> Mark Period
+                                    Start
+                                </button>
+                                <button
+                                    class="btn romantic-btn romantic-btn-secondary"
+                                    onclick="markPeriodEnd()"
+                                >
+                                    <i class="fas fa-stop-circle"></i> Mark
+                                    Period End
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cycle Settings -->
+                    <div
+                        class="romantic-card mt-4"
+                        data-aos="fade-right"
+                        data-aos-delay="100"
+                    >
+                        <div class="card-header">
+                            <h4><i class="fas fa-cog"></i> Cycle Settings</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="cycleLength" class="form-label"
+                                    >Average Cycle Length</label
+                                >
+                                <select
+                                    id="cycleLength"
+                                    class="form-select romantic-input"
+                                    onchange="updateCycleLength()"
+                                >
+                                    <option value="21">21 days</option>
+                                    <option value="22">22 days</option>
+                                    <option value="23">23 days</option>
+                                    <option value="24">24 days</option>
+                                    <option value="25">25 days</option>
+                                    <option value="26" selected>26 days</option>
+                                    <option value="27">27 days</option>
+                                    <option value="28">28 days</option>
+                                    <option value="29">29 days</option>
+                                    <option value="30">30 days</option>
+                                    <option value="31">31 days</option>
+                                    <option value="32">32 days</option>
+                                    <option value="33">33 days</option>
+                                    <option value="34">34 days</option>
+                                    <option value="35">35 days</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="periodLength" class="form-label"
+                                    >Period Length</label
+                                >
+                                <select
+                                    id="periodLength"
+                                    class="form-select romantic-input"
+                                    onchange="updatePeriodLength()"
+                                >
+                                    <option value="3" selected>3 days</option>
+                                    <option value="4">4 days</option>
+                                    <option value="5">5 days</option>
+                                    <option value="6">6 days</option>
+                                    <option value="7">7 days</option>
+                                    <option value="8">8 days</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Period Prediction -->
+                <div class="col-lg-8">
+                    <div class="romantic-card" data-aos="fade-left">
+                        <div class="card-header">
+                            <h3>
+                                <i class="fas fa-chart-line"></i> Upcoming
+                                Periods
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="periodPredictions">
+                                <!-- Predictions will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Period Entry -->
+            <div class="romantic-card mt-5" data-aos="fade-up">
+                <div class="card-header">
+                    <h3><i class="fas fa-plus-circle"></i> Add Period Entry</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="periodStartDate" class="form-label"
+                                    >Period Start Date</label
+                                >
+                                <input
+                                    type="date"
+                                    id="periodStartDate"
+                                    class="form-control romantic-input"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="periodEndDate" class="form-label"
+                                    >Period End Date (Optional)</label
+                                >
+                                <input
+                                    type="date"
+                                    id="periodEndDate"
+                                    class="form-control romantic-input"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button
+                                class="btn romantic-btn romantic-btn-primary"
+                                onclick="addPeriodEntry()"
+                            >
+                                <i class="fas fa-plus"></i> Add Entry
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Period History -->
+            <div class="romantic-card mt-5" data-aos="fade-up">
+                <div class="card-header">
+                    <h3><i class="fas fa-history"></i> Period History</h3>
+                </div>
+                <div class="card-body">
+                    <div id="periodHistory" class="period-history">
+                        <!-- History will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- AOS Animation -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <!-- Storage System -->
+        <script src="js/storage.js"></script>
+
+        <!-- Authentication -->
+        <script src="js/auth.js"></script>
+
+        <!-- Main JS -->
+        <script src="js/main.js"></script>
+
+        <!-- PWA -->
+        <script src="js/pwa.js"></script>
+
+        <style>
+            .status-display {
+                padding: 2rem 0;
+            }
+
+            .status-icon {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+            }
+
+            .status-text {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: var(--romantic-purple);
+                margin-bottom: 0.5rem;
+            }
+
+            .status-days {
+                color: #666;
+                font-size: 0.9rem;
+            }
+
+            .period-history {
+                max-height: 300px;
+                overflow-y: auto;
+            }
+
+            .history-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.8rem;
+                border-bottom: 1px solid var(--romantic-light-pink);
+                background: var(--romantic-lavender);
+                margin-bottom: 0.5rem;
+                border-radius: 8px;
+                position: relative;
+            }
+
+            .history-item:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .history-date {
+                font-weight: 600;
+                color: var(--romantic-purple);
+            }
+
+            .history-duration {
+                color: #666;
+                font-size: 0.9rem;
+            }
+
+            .history-delete {
+                background: none;
+                border: none;
+                color: #dc3545;
+                cursor: pointer;
+                padding: 0.2rem;
+                border-radius: 3px;
+                transition: background-color 0.3s ease;
+            }
+
+            .history-delete:hover {
+                background-color: rgba(220, 53, 69, 0.1);
+            }
+
+            .predictions-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+                margin-top: 1rem;
+            }
+
+            .prediction-block {
+                background: linear-gradient(135deg, #ffe6f2 0%, #fff0f8 100%);
+                border: 2px solid var(--romantic-pink);
+                border-radius: 20px;
+                padding: 1.5rem;
+                text-align: center;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .prediction-block:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+                border-color: var(--romantic-purple);
+            }
+
+            .prediction-block::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(
+                    45deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent
+                );
+                transform: rotate(45deg);
+                transition: all 0.5s ease;
+                opacity: 0;
+            }
+
+            .prediction-block:hover::before {
+                opacity: 1;
+                left: 100%;
+            }
+
+            .prediction-month {
+                font-family: "Dancing Script", cursive;
+                font-size: 1.8rem;
+                font-weight: 600;
+                color: var(--romantic-purple);
+                margin-bottom: 0.5rem;
+            }
+
+            .prediction-date {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: var(--romantic-pink);
+                margin-bottom: 0.5rem;
+                line-height: 1;
+            }
+
+            .prediction-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(255, 107, 157, 0.2);
+            }
+
+            .days-left {
+                background: var(--romantic-gradient);
+                color: white;
+                padding: 0.3rem 0.8rem;
+                border-radius: 15px;
+                font-size: 0.8rem;
+                font-weight: 600;
+            }
+
+            .prediction-icon {
+                color: var(--romantic-pink);
+                font-size: 1.2rem;
+            }
+
+            .prediction-block.current-month {
+                background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+                color: white;
+                border-color: #c44569;
+            }
+
+            .prediction-block.current-month .prediction-month,
+            .prediction-block.current-month .prediction-date {
+                color: white;
+            }
+
+            .prediction-block.current-month .days-left {
+                background: rgba(255, 255, 255, 0.2);
+                color: white;
+            }
+
+            @media (max-width: 768px) {
+                .predictions-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1rem;
+                }
+
+                .prediction-block {
+                    padding: 1rem;
+                }
+
+                .prediction-month {
+                    font-size: 1.5rem;
+                }
+
+                .prediction-date {
+                    font-size: 2rem;
+                }
+            }
+        </style>
+
+        <script>
+            const storage = {
+                get(key, fallback = {}) {
+                    const value = localStorage.getItem(key);
+                    return value ? JSON.parse(value) : fallback;
+                },
+                set(key, value) {
+                    localStorage.setItem(key, JSON.stringify(value));
+                },
+                getPeriodData() {
+                    return this.get("period_data", {
+                        cycle_length: 26,
+                        period_length: 3,
+                        last_period: null,
+                        current_period_start: null,
+                    });
+                },
+                savePeriodData(data) {
+                    this.set("period_data", data);
+                },
+            };
+
+            let periodData = storage.getPeriodData();
+
+            document.addEventListener("DOMContentLoaded", function () {
+                AOS.init({ duration: 1000, once: true });
+                loadPeriodData();
+                updateStatus();
+                loadPeriodHistory();
+                loadPeriodPredictions();
+            });
+
+            function loadPeriodData() {
+                periodData = storage.getPeriodData();
+                document.getElementById("cycleLength").value =
+                    periodData.cycle_length || 26;
+                document.getElementById("periodLength").value =
+                    periodData.period_length || 3;
+            }
+
+            function updateCycleLength() {
+                const cycleLength = parseInt(
+                    document.getElementById("cycleLength").value,
+                );
+                periodData.cycle_length = cycleLength;
+                storage.savePeriodData(periodData);
+                updateStatus();
+                loadPeriodPredictions();
+            }
+
+            function updatePeriodLength() {
+                const periodLength = parseInt(
+                    document.getElementById("periodLength").value,
+                );
+                periodData.period_length = periodLength;
+                storage.savePeriodData(periodData);
+                updateStatus();
+                loadPeriodPredictions();
+            }
+
+            function markPeriodStart() {
+                const today = new Date().toISOString().split("T")[0];
+                periodData.last_period = today;
+                periodData.current_period_start = today;
+                storage.savePeriodData(periodData);
+
+                const history = storage.get("period_history", []);
+                history.push({ start_date: today, id: Date.now() });
+                storage.set("period_history", history);
+
+                updateStatus();
+                loadPeriodHistory();
+                loadPeriodPredictions();
+                showNotification("Period start marked successfully", "success");
+            }
+
+            function markPeriodEnd() {
+                if (!periodData.current_period_start) {
+                    showNotification("Please mark period start first", "error");
+                    return;
+                }
+
+                const today = new Date().toISOString().split("T")[0];
+                const start = new Date(periodData.current_period_start);
+                const end = new Date(today);
+                const duration =
+                    Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+
+                const history = storage.get("period_history", []);
+                const current = history.find(
+                    (p) => p.start_date === periodData.current_period_start,
+                );
+                if (current) {
+                    current.end_date = today;
+                    current.duration = duration;
+                }
+                storage.set("period_history", history);
+
+                delete periodData.current_period_start;
+                storage.savePeriodData(periodData);
+
+                updateStatus();
+                loadPeriodHistory();
+                loadPeriodPredictions();
+                showNotification(
+                    `Period ended. Duration: ${duration} days`,
+                    "success",
+                );
+            }
+
+            function addPeriodEntry() {
+                const startDate =
+                    document.getElementById("periodStartDate").value;
+                const endDate = document.getElementById("periodEndDate").value;
+
+                if (!startDate) {
+                    showNotification("Please select a start date", "error");
+                    return;
+                }
+
+                const entry = { start_date: startDate, id: Date.now() };
+                if (endDate) {
+                    const start = new Date(startDate);
+                    const end = new Date(endDate);
+                    entry.end_date = endDate;
+                    entry.duration =
+                        Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+                }
+
+                const history = storage.get("period_history", []);
+                history.push(entry);
+                storage.set("period_history", history);
+
+                periodData.last_period = startDate;
+                storage.savePeriodData(periodData);
+
+                document.getElementById("periodStartDate").value = "";
+                document.getElementById("periodEndDate").value = "";
+
+                updateStatus();
+                loadPeriodHistory();
+                loadPeriodPredictions();
+                showNotification("Period entry added successfully", "success");
+            }
+
+            function deletePeriodEntry(id) {
+                if (!confirm("Are you sure you want to delete this entry?"))
+                    return;
+                const history = storage.get("period_history", []);
+                const updated = history.filter((p) => p.id !== id);
+                storage.set("period_history", updated);
+                loadPeriodHistory();
+                showNotification("Period entry deleted", "success");
+            }
+
+            function loadPeriodHistory() {
+                const container = document.getElementById("periodHistory");
+                const history = storage.get("period_history", []);
+
+                if (!history.length) {
+                    container.innerHTML =
+                        '<p class="text-muted text-center">No period history yet</p>';
+                    return;
+                }
+
+                container.innerHTML = history
+                    .slice(-10)
+                    .reverse()
+                    .map((p) => {
+                        const start = new Date(
+                            p.start_date,
+                        ).toLocaleDateString();
+                        const duration = p.duration
+                            ? `${p.duration} days`
+                            : "Ongoing";
+                        return `
+                    <div class="history-item">
+                        <div>
+                            <div class="history-date">${start}</div>
+                            <div class="history-duration">${duration}</div>
+                        </div>
+                        <button class="history-delete" onclick="deletePeriodEntry(${p.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                    })
+                    .join("");
+            }
+
+            function loadPeriodPredictions() {
+                const container = document.getElementById("periodPredictions");
+                if (!periodData.last_period) {
+                    container.innerHTML =
+                        '<p class="text-muted text-center">No prediction available</p>';
+                    return;
+                }
+
+                const predictions = [];
+                const today = new Date();
+                for (let i = 1; i <= 6; i++) {
+                    const date = new Date(periodData.last_period);
+                    date.setDate(
+                        date.getDate() + i * (periodData.cycle_length || 26),
+                    );
+                    const daysLeft = Math.ceil(
+                        (date - today) / (1000 * 60 * 60 * 24),
+                    );
+                    predictions.push({ date, daysLeft });
+                }
+
+                container.innerHTML = `
+                <div class="predictions-grid">
+                    ${predictions
+                        .map(
+                            (p) => `
+                        <div class="prediction-block">
+                            <div class="prediction-month">${p.date.toLocaleString("default", { month: "long" })}</div>
+                            <div class="prediction-date">${p.date.getDate()}</div>
+                            <div class="prediction-info">
+                                <i class="fas fa-clock prediction-icon"></i>
+                                <span class="days-left">${p.daysLeft > 0 ? `${p.daysLeft} days left` : "Overdue"}</span>
+                            </div>
+                        </div>
+                    `,
+                        )
+                        .join("")}
+                </div>
+            `;
+            }
+
+            function updateStatus() {
+                const icon = document.querySelector(".status-icon");
+                const text = document.querySelector(".status-text");
+                const days = document.querySelector(".status-days");
+
+                if (periodData.current_period_start) {
+                    const start = new Date(periodData.current_period_start);
+                    const now = new Date();
+                    const dayCount =
+                        Math.floor((now - start) / (1000 * 60 * 60 * 24)) + 1;
+                    icon.textContent = "🔴";
+                    text.textContent = "Period Active";
+                    days.textContent = `Day ${dayCount} of period`;
+                } else if (periodData.last_period) {
+                    const last = new Date(periodData.last_period);
+                    const now = new Date();
+                    const passed = Math.floor(
+                        (now - last) / (1000 * 60 * 60 * 24),
+                    );
+                    const cycle = periodData.cycle_length || 26;
+                    const remaining = cycle - passed;
+
+                    if (remaining <= 0) {
+                        icon.textContent = "⚠️";
+                        text.textContent = "Period Expected";
+                        days.textContent = `${Math.abs(remaining)} days overdue`;
+                    } else if (remaining <= 3) {
+                        icon.textContent = "🟡";
+                        text.textContent = "Period Coming Soon";
+                        days.textContent = `${remaining} days remaining`;
+                    } else {
+                        icon.textContent = "💖";
+                        text.textContent = "Regular Cycle";
+                        days.textContent = `${remaining} days left`;
+                    }
+                } else {
+                    icon.textContent = "❓";
+                    text.textContent = "No Data";
+                    days.textContent = "Mark your period to start tracking";
+                }
+            }
+
+            function showNotification(message, type) {
+                const notification = document.createElement("div");
+                notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === "success" ? "#28a745" : "#dc3545"};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 10000;
+                font-weight: 500;
+            `;
+                notification.innerHTML = message;
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 3000);
+            }
+        </script>
+    </body>
+</html>

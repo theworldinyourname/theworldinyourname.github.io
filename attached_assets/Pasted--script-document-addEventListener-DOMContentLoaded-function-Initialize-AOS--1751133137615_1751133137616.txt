@@ -1,0 +1,113 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Load saved photo on page load
+        loadSavedProfilePhoto();
+    });
+
+    function revealSensitiveInfo() {
+        const password = document.getElementById('sensitive-password').value.trim(); // Fixed: added .trim()
+        if (password === '112404' || password === '24112004') {
+            document.querySelectorAll('.sensitive-content').forEach(el => {
+                el.style.display = 'block';
+            });
+            document.getElementById('password-section').style.display = 'none';
+            
+            // Show notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #28a745;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 10000;
+            `;
+            notification.textContent = 'Sensitive information unlocked';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 3000);
+        } else {
+            alert('Incorrect password');
+        }
+    }
+
+    function selectProfilePhoto() {
+        document.getElementById('profilePhotoInput').click();
+    }
+
+    function handleProfilePhotoSelect(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+            alert('Please select an image file.');
+            return;
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+            alert('Please select an image smaller than 5MB.');
+            return;
+        }
+
+        const container = document.getElementById('profilePhotoContainer');
+        container.classList.add('photo-loading');
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            displayProfilePhoto(e.target.result);
+            saveProfilePhotoUrl(e.target.result);
+            container.classList.remove('photo-loading');
+        };
+        reader.readAsDataURL(file);
+
+        event.target.value = '';
+    }
+
+    function displayProfilePhoto(photoUrl) {
+        const placeholder = document.getElementById('photoPlaceholder');
+        const photoImg = document.getElementById('profilePhoto');
+        const removeBtn = document.getElementById('removePhotoBtn');
+
+        placeholder.style.display = 'none';
+        photoImg.src = photoUrl;
+        photoImg.style.display = 'block';
+        removeBtn.style.display = 'inline-flex';
+    }
+
+    function removeProfilePhoto() {
+        if (!confirm('Are you sure you want to remove this photo?')) {
+            return;
+        }
+
+        const placeholder = document.getElementById('photoPlaceholder');
+        const photoImg = document.getElementById('profilePhoto');
+        const removeBtn = document.getElementById('removePhotoBtn');
+
+        placeholder.style.display = 'flex';
+        photoImg.style.display = 'none';
+        photoImg.src = '';
+        removeBtn.style.display = 'none';
+
+        localStorage.removeItem('profilePhotoUrl');
+    }
+
+    function saveProfilePhotoUrl(url) {
+        localStorage.setItem('profilePhotoUrl', url);
+    }
+
+    function loadSavedProfilePhoto() {
+        const savedUrl = localStorage.getItem('profilePhotoUrl');
+        if (savedUrl) {
+            displayProfilePhoto(savedUrl);
+        }
+    }
+</script>

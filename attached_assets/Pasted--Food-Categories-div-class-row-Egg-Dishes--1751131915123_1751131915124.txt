@@ -1,0 +1,177 @@
+
+            <!-- Food Categories -->
+            <div class="row">
+                <!-- Egg Dishes -->
+                <div class="col-md-6 mb-4">
+                    <div class="romantic-card food-category" data-aos="fade-up">
+                        <div class="food-header">
+                            <h3><span class="food-emoji">🥚</span> Egg Dishes</h3>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Egg Point Vijayanagar</div>
+                            <div class="dish-list">
+                                <span class="dish">Egg Rice</span>
+                                <span class="dish">Egg Omelette</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Momos -->
+                <div class="col-md-6 mb-4">
+                    <div class="romantic-card food-category" data-aos="fade-up" data-aos-delay="100">
+                        <div class="food-header">
+                            <h3><span class="food-emoji">🥟</span> Momos</h3>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Global Village, RR Nagar</div>
+                            <div class="dish-list">
+                                <span class="dish priority-high">Hot Tibetan Momos</span>
+                                <span class="dish">Veg Steam</span>
+                                <span class="dish">Paneer Steam</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cakes & Desserts -->
+                <div class="col-md-6 mb-4">
+                    <div class="romantic-card food-category" data-aos="fade-up" data-aos-delay="200">
+                        <div class="food-header">
+                            <h3><span class="food-emoji">🍰</span> Cakes & Desserts</h3>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Retro Bakes (Near Home)</div>
+                            <div class="dish-list">
+                                <span class="dish priority-high">Chocolate Cake</span>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Glens Bakehouse</div>
+                            <div class="dish-list">
+                                <span class="dish">Red Velvet Cupcakes</span>
+                                <span class="dish">Chocolate Hazelnut Cupcakes</span>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Taco Bell</div>
+                            <div class="dish-list">
+                                <span class="dish priority-high">Churros and Chocolate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maggi & Snacks -->
+                <div class="col-md-6 mb-4">
+                    <div class="romantic-card food-category" data-aos="fade-up" data-aos-delay="300">
+                        <div class="food-header">
+                            <h3><span class="food-emoji">🍜</span> Maggi & Snacks</h3>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">SMV Snacks Corner, VV Puram</div>
+                            <div class="dish-list">
+                                <span class="dish priority-high">Tandoori Cheese Maggi</span>
+                                <span class="dish">Garlic Bread</span>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Vijayanagar Food Street</div>
+                            <div class="dish-list">
+                                <span class="dish">Samosa (with only Sweet Chutney)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mall Food -->
+                <div class="col-md-6 mb-4">
+                    <div class="romantic-card food-category" data-aos="fade-up" data-aos-delay="400">
+                        <div class="food-header">
+                            <h3><span class="food-emoji">🛍️</span> Mall Food</h3>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Lulu Mall</div>
+                            <div class="dish-list">
+                                <span class="dish priority-high">Paneer Pulav</span>
+                                <span class="dish">Plum Cake</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- McDonald's -->
+                <div class="col-md-6 mb-4">
+                    <div class="romantic-card food-category" data-aos="fade-up" data-aos-delay="500">
+                        <div class="food-header">
+                            <h3><span class="food-emoji">🍟</span> McDonald's</h3>
+                            <small class="priority-order">Priority: High to Low</small>
+                        </div>
+                        <div class="food-item">
+                            <div class="dish-list priority-list">
+                                <span class="dish priority-1">Cheesy Fries</span>
+                                <span class="dish priority-2">Peri Peri</span>
+                                <span class="dish priority-3">Pizza Puff</span>
+                                <span class="dish priority-4">Maharaja Burger</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Domino's -->
+                <div class="col-md-6 mb-4">
+                    <div class="romantic-card food-category" data-aos="fade-up" data-aos-delay="600">
+                        <div class="food-header">
+                            <h3><span class="food-emoji">🍕</span> Domino's</h3>
+                            <small class="priority-order">Priority: High to Low</small>
+                        </div>
+                        <div class="food-item">
+                            <div class="dish-list priority-list">
+                                <span class="dish priority-1">Lava Cake</span>
+                                <span class="dish priority-2">Garlic Bread</span>
+                                <span class="dish priority-3">Zingy Parcel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Favorites -->
+                <div class="col-md-6 mb-4">
+                    <div class="romantic-card food-category" data-aos="fade-up" data-aos-delay="700">
+                        <div class="food-header">
+                            <h3><span class="food-emoji">🍽️</span> Other Favorites</h3>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Pizza Hut</div>
+                            <div class="dish-list">
+                                <span class="dish">Cheese Garlic Bread</span>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Kapoor's Cafe, Rajajinagar</div>
+                            <div class="dish-list">
+                                <span class="dish priority-high">Parota</span>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Truffles</div>
+                            <div class="dish-list">
+                                <span class="dish">Egg Wrap</span>
+                                <span class="dish">Aleoli Pasta</span>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">KFC</div>
+                            <div class="dish-list">
+                                <span class="dish">Zinger Burger</span>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <div class="place-name">Chats Store (Near Home)</div>
+                            <div class="dish-list">
+                                <span class="dish">Paneer Manchurian (with Capsicum)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

@@ -1,0 +1,104 @@
+{
+    "name": "Love App",
+    "short_name": "LoveApp",
+    "description": "A romantic web app for couples to share memories, chat, and stay connected",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ff6b9d",
+    "theme_color": "#ff6b9d",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "categories": ["lifestyle", "social"],
+    "icons": [
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjQiIGZpbGw9InVybCgjZ3JhZGllbnQwX2xpbmVhcl8xXzEpIi8+CjxwYXRoIGQ9Ik0zNiAxOEMzNiAxNC42ODYzIDMzLjMxMzcgMTIgMzAgMTJDMjYuNjg2MyAxMiAyNCAxNC42ODYzIDI0IDE4QzI0IDE0LjY4NjMgMjEuMzEzNyAxMiAxOCAxMkMxNC42ODYzIDEyIDEyIDE0LjY4NjMgMTIgMThDMTIgMjEuMzEzNyAxNC42ODYzIDI0IDE4IDI0QzE5LjEwNDYgMjQgMjAuMTQ2NCAyMy43MTA2IDIxLjA3MDkgMjMuMjAwNEwyNCAzNkwyNi45MjkxIDIzLjIwMDRDMjcuODUzNiAyMy43MTA2IDI4Ljg5NTQgMjQgMzAgMjRDMzMuMzEzNyAyNCAzNiAyMS4zMTM3IDM2IDE4WiIgZmlsbD0id2hpdGUiLz4KPHN2ZyBkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSI0OCIgeTI9IjQ4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRjZCOUQiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQzQ0NTY5Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHN2Zz4=",
+            "sizes": "48x48",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzYiIGN5PSIzNiIgcj0iMzYiIGZpbGw9InVybCgjZ3JhZGllbnQwX2xpbmVhcl8xXzEpIi8+CjxwYXRoIGQ9Ik01NCAyN0M1NCAyMi4wMjk0IDQ5Ljk3MDYgMTggNDUgMThDNDAuMDI5NCAxOCAzNiAyMi4wMjk0IDM2IDI3QzM2IDIyLjAyOTQgMzEuOTcwNiAxOCAyNyAxOEMyMi4wMjk0IDE4IDE4IDIyLjAyOTQgMTggMjdDMTggMzEuOTcwNiAyMi4wMjk0IDM2IDI3IDM2QzI4LjY1NjkgMzYgMzAuMjE5NyAzNS41NjU5IDMxLjYwNjMgMzQuODAwNkwzNiA1NEw0MC4zOTM3IDM0LjgwMDZDNDEuNzgwMyAzNS41NjU5IDQzLjM0MzEgMzYgNDUgMzZDNDkuOTcwNiAzNiA1NCAzMS45NzA2IDU0IDI3WiIgZmlsbD0id2hpdGUiLz4KPHN2ZyBkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSI3MiIgeTI9IjcyIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRjZCOUQiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQzQ0NTY5Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHN2Zz4=",
+            "sizes": "72x72",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9InVybCgjZ3JhZGllbnQwX2xpbmVhcl8xXzEpIi8+CjxwYXRoIGQ9Ik03MiAzNkM3MiAyOS4zNzI2IDY2LjYyNzQgMjQgNjAgMjRDNTMuMzcyNiAyNCA0OCAyOS4zNzI2IDQ4IDM2QzQ4IDI5LjM3MjYgNDIuNjI3NCAyNCAzNiAyNEMyOS4zNzI2IDI0IDI0IDI5LjM3MjYgMjQgMzZDMjQgNDIuNjI3NCAyOS4zNzI2IDQ4IDM2IDQ4QzM4LjIwOTIgNDggNDAuMjkyOSA0Ny40MjEyIDQyLjE0MTMgNDYuNDAwOEw0OCA3Mkw1My44NTg3IDQ2LjQwMDhDNTUuNzA3MSA0Ny40MjEyIDU3Ljc5MDggNDggNjAgNDhDNjYuNjI3NCA0OCA3MiA0Mi42Mjc0IDcyIDM2WiIgZmlsbD0id2hpdGUiLz4KPHN2ZyBkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSI5NiIgeTI9Ijk2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRjZCOUQiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQzQ0NTY5Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHN2Zz4=",
+            "sizes": "96x96",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0IiBoZWlnaHQ9IjE0NCIgdmlld0JveD0iMCAwIDE0NCAxNDQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjcyIiBjeT0iNzIiIHI9IjcyIiBmaWxsPSJ1cmwoI2dyYWRpZW50MF9saW5lYXJfMV8xKSIvPgo8cGF0aCBkPSJNMTA4IDU0QzEwOCA0NC4wNTg4IDk5Ljk0MTIgMzYgOTAgMzZDODAuMDU4OCAzNiA3MiA0NC4wNTg4IDcyIDU0QzcyIDQ0LjA1ODggNjMuOTQxMiAzNiA1NCAzNkM0NC4wNTg4IDM2IDM2IDQ0LjA1ODggMzYgNTRDMzYgNjMuOTQxMiA0NC4wNTg4IDcyIDU0IDcyQzU3LjMxMzggNzIgNjAuNDM5MyA3MS4xMzE4IDYzLjIxMTkgNjkuNjAxMkw3MiAxMDhMODAuNzg4MSA2OS42MDEyQzgzLjU2MDcgNzEuMTMxOCA4Ni42ODYyIDcyIDkwIDcyQzk5Ljk0MTIgNzIgMTA4IDYzLjk0MTIgMTA4IDU0WiIgZmlsbD0id2hpdGUiLz4KPHN2ZyBkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSIxNDQiIHkyPSIxNDQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGNkI5RCIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNDNDQ1NjkiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=",
+            "sizes": "144x144",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9Ijk2IiBmaWxsPSJ1cmwoI2dyYWRpZW50MF9saW5lYXJfMV8xKSIvPgo8cGF0aCBkPSJNMTQ0IDcyQzE0NCA1OC43NDUyIDEzMy4yNTUgNDggMTIwIDQ4QzEwNi43NDUgNDggOTYgNTguNzQ1MiA5NiA3Mko5NiA1OC43NDUyIDg1LjI1NDggNDggNzIgNDhDNTguNzQ1MiA0OCA0OCA1OC43NDUyIDQ4IDcyQzQ4IDg1LjI1NDggNTguNzQ1MiA5NiA3MiA5NkM3Ni40MTg0IDk2IDgwLjU4NTcgOTQuODQyNCA4NC4yODI1IDkyLjgwMTZMOTYgMTQ0TDEwNy43MTggOTIuODAxNkMxMTEuNDE0IDk0Ljg0MjQgMTE1LjU4MiA5NiAxMjAgOTZDMTMzLjI1NSA5NiAxNDQgODUuMjU0OCAxNDQgNzJaIiBmaWxsPSJ3aGl0ZSIvPgo8c3ZnIGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQwX2xpbmVhcl8xXzEiIHgxPSIwIiB5MT0iMCIgeDI9IjE5MiIgeTI9IjE5MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRkY2QjlEIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M0NDU2OSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==",
+            "sizes": "192x192",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSJ1cmwoI2dyYWRpZW50MF9saW5lYXJfMV8xKSIvPgo8cGF0aCBkPSJNMzg0IDE5MkMzODQgMTU2LjY1NCAzNTUuMzQ2IDEyOCAzMjAgMTI4QzI4NC42NTQgMTI4IDI1NiAxNTYuNjU0IDI1NiAxOTJDMjU2IDE1Ni42NTQgMjI3LjM0NiAxMjggMTkyIDEyOEMxNTYuNjU0IDEyOCAxMjggMTU2LjY1NCAxMjggMTkyQzEyOCAyMjcuMzQ2IDE1Ni42NTQgMjU2IDE5MiAyNTZDMjAzLjExNSAyNTYgMjEzLjU2MSAyNTIuMjI5IDIyMi42MjcgMjQ2LjEzNkwyNTYgMzg0TDI4OS4zNzMgMjQ2LjEzNkMyOTguNDM5IDI1Mi4yMjkgMzA4Ljg4NSAyNTYgMzIwIDI1NkMzNTUuMzQ2IDI1NiAzODQgMjI3LjM0NiAzODQgMTkyWiIgZmlsbD0id2hpdGUiLz4KPHN2ZyBkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSI1MTIiIHkyPSI1MTIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGNkI5RCIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNDNDQ1NjkiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Chat",
+            "short_name": "Chat",
+            "description": "Open chat with your love",
+            "url": "/chat.html",
+            "icons": [
+                {
+                    "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9IiNGRjZCOUQiLz4KPHBhdGggZD0iTTcyIDM2SDI0QzIwLjY4NjMgMzYgMTggMzguNjg2MyAxOCA0MlY2MEMxOCA2My4zMTM3IDIwLjY4NjMgNjYgMjQgNjZIMzBMNDIgNzJWNjZINzJDNzUuMzEzNyA2NiA3OCA2My4zMTM3IDc4IDYwVjQyQzc4IDM4LjY4NjMgNzUuMzEzNyAzNiA3MiAzNloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg==",
+                    "sizes": "96x96",
+                    "type": "image/svg+xml"
+                }
+            ]
+        },
+        {
+            "name": "Photo Gallery",
+            "short_name": "Photos",
+            "description": "View your photo memories",
+            "url": "/photo-gallery.html",
+            "icons": [
+                {
+                    "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9IiNGRjZCOUQiLz4KPHBhdGggZD0iTTcyIDI0SDI0QzIwLjY4NjMgMjQgMTggMjYuNjg2MyAxOCAzMFY2NkMxOCA2OS4zMTM3IDIwLjY4NjMgNzIgMjQgNzJINzJDNzUuMzEzNyA3MiA3OCA2OS4zMTM3IDc4IDY2VjMwQzc4IDI2LjY4NjMgNzUuMzEzNyAyNCA3MiAyNFpNNTQgNDJDNTQgNDUuMzEzNyA1MS4zMTM3IDQ4IDQ4IDQ4QzQ0LjY4NjMgNDggNDIgNDUuMzEzNyA0MiA0MkM0MiAzOC42ODYzIDQ0LjY4NjMgMzYgNDggMzZDNTEuMzEzNyAzNiA1NCAzOC42ODYzIDU0IDQyWk0yNCA2NkwyOCA1NEwzNiA2MEw0OCA1NEw3MiA2NkgyNFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg==",
+                    "sizes": "96x96",
+                    "type": "image/svg+xml"
+                }
+            ]
+        },
+        {
+            "name": "Journal",
+            "short_name": "Journal",
+            "description": "Write in your love journal",
+            "url": "/journal.html",
+            "icons": [
+                {
+                    "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9IiNGRjZCOUQiLz4KPHBhdGggZD0iTTMwIDI0VjcySDY2VjI0SDMwWk0zNiAzNkg2MFYzNkgzNlpNMzYgNDJINjBWNDJIMzZaTTM2IDQ4SDU0VjQ4SDM2WiIgZmlsbD0id2hpdGUiLz4KPHN2Zz4=",
+                    "sizes": "96x96",
+                    "type": "image/svg+xml"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2OCIgdmlld0JveD0iMCAwIDMyMCA1NjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iNTY4IiBmaWxsPSJ1cmwoI2dyYWRpZW50MF9saW5lYXJfMV8xKSIvPgo8dGV4dCB4PSIxNjAiIHk9IjI4NCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iMjQiPkxvdmUgQXBwPC90ZXh0Pgo8c3ZnIGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQwX2xpbmVhcl8xXzEiIHgxPSIwIiB5MT0iMCIgeDI9IjMyMCIgeTI9IjU2OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRkY2QjlEIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M0NDU2OSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==",
+            "sizes": "320x568",
+            "type": "image/svg+xml",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAyNCIgaGVpZ2h0PSI3NjgiIHZpZXdCb3g9IjAgMCAxMDI0IDc2OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwMjQiIGhlaWdodD0iNzY4IiBmaWxsPSJ1cmwoI2dyYWRpZW50MF9saW5lYXJfMV8xKSIvPgo8dGV4dCB4PSI1MTIiIHk9IjM4NCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNDgiPkxvdmUgQXBwPC90ZXh0Pgo8c3ZnIGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQwX2xpbmVhcl8xXzEiIHgxPSIwIiB5MT0iMCIgeDI9IjEwMjQiIHkyPSI3NjgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGNkI5RCIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNDNDQ1NjkiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=",
+            "sizes": "1024x768",
+            "type": "image/svg+xml",
+            "form_factor": "wide"
+        }
+    ],
+    "features": [
+        "cross-origin-isolated"
+    ],
+    "prefer_related_applications": false
+}

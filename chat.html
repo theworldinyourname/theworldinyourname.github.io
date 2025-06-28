@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Chat</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#075e54">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Love App">
+
+    <!-- iOS Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Love App">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat-enhancements.css">
+</head>
+<body>
+    <div class="whatsapp-container">
+        <!-- WhatsApp Background -->
+        <div class="whatsapp-background">
+            <svg class="bg-pattern" viewBox="0 0 100 100">
+                <defs>
+                    <pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <text x="10" y="15" text-anchor="middle" font-size="12" fill="rgba(255,192,203,0.1)">💕</text>
+                    </pattern>
+                    <pattern id="paws" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse">
+                        <text x="12" y="18" text-anchor="middle" font-size="10" fill="rgba(255,182,193,0.08)">🐾</text>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hearts)"/>
+                <rect width="100%" height="100%" fill="url(#paws)"/>
+            </svg>
+        </div>
+
+        <!-- WhatsApp Header -->
+        <div class="whatsapp-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="partner-avatar-container">
+                    <div class="partner-avatar">
+                        <div class="partner-avatar-placeholder">
+                            <span class="avatar-letter">D</span>
+                        </div>
+                    </div>
+                    <div class="online-indicator" id="onlineIndicator"></div>
+                </div>
+                <div class="partner-info">
+                    <div class="partner-name">Darling</div>
+                    <div class="partner-status" id="partnerStatus">online</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" onclick="searchMessages()" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="header-btn" onclick="toggleChatMenu()" title="Menu">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Menu Dropdown -->
+        <div class="chat-menu" id="chatMenu">
+            <div class="menu-item" onclick="viewContactInfo()">
+                <i class="fas fa-user"></i> Contact info
+            </div>
+            <div class="menu-item" onclick="selectMessages()">
+                <i class="fas fa-check-square"></i> Select messages
+            </div>
+            <div class="menu-item" onclick="muteNotifications()">
+                <i class="fas fa-bell-slash"></i> Mute notifications
+            </div>
+            <div class="menu-item" onclick="clearChat()">
+                <i class="fas fa-trash"></i> Clear chat
+            </div>
+            <div class="menu-item" onclick="exportChat()">
+                <i class="fas fa-download"></i> Export chat
+            </div>
+            <div class="menu-item" onclick="toggleSettings()">
+                <i class="fas fa-cog"></i> Settings
+            </div>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel" id="settingsPanel">
+            <div class="settings-header">
+                <button onclick="toggleSettings()"><i class="fas fa-times"></i></button>
+                <h3>Chat Settings</h3>
+            </div>
+            <div class="settings-content">
+                <div class="setting-group">
+                    <h4>Theme</h4>
+                    <div class="theme-options">
+                        <div class="theme-option active" onclick="changeTheme('light')">Light</div>
+                        <div class="theme-option" onclick="changeTheme('dark')">Dark</div>
+                        <div class="theme-option" onclick="changeTheme('romantic')">Romantic</div>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h4>Background</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="backgroundToggle" checked onchange="toggleBackground()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-group">
+                    <h4>Sounds</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="soundsToggle" checked onchange="toggleSounds()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be dynamically added here -->
+        </div>
+
+        <!-- Chat Input Container -->
+        <div class="chat-input-container">
+            <!-- Emoji Picker -->
+            <div class="emoji-picker" id="emojiPicker">
+                <div class="emoji-categories">
+                    <button class="emoji-category-btn active" onclick="showEmojiCategory('smileys')">😊</button>
+                    <button class="emoji-category-btn" onclick="showEmojiCategory('hearts')">❤️</button>
+                    <button class="emoji-category-btn" onclick="showEmojiCategory('animals')">🐶</button>
+                    <button class="emoji-category-btn" onclick="showEmojiCategory('food')">🍕</button>
+                </div>
+                <div class="emoji-grid" id="emojiGrid">
+                    <!-- Emojis will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Attach Menu -->
+            <div class="attach-menu" id="attachMenu">
+                <div class="attach-option" onclick="selectFile('photo')">
+                    <i class="fas fa-image"></i>
+                    <span>Photo</span>
+                </div>
+                <div class="attach-option" onclick="selectFile('video')">
+                    <i class="fas fa-video"></i>
+                    <span>Video</span>
+                </div>
+                <div class="attach-option" onclick="selectFile('document')">
+                    <i class="fas fa-file"></i>
+                    <span>Document</span>
+                </div>
+            </div>
+
+            <!-- Input Row -->
+            <div class="d-flex align-items-center gap-2">
+                <button class="input-btn attach-btn" onclick="toggleAttachMenu()" title="Attach">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+
+                <input type="text" 
+                       id="messageInput" 
+                       class="chat-input" 
+                       placeholder="Type a message..."
+                       onkeypress="handleInputKeydown(event)"
+                       oninput="handleTyping()">
+
+                <button class="input-btn emoji-btn" onclick="toggleEmojiPicker()" title="Emoji">
+                    <i class="fas fa-smile"></i>
+                </button>
+
+                <button class="input-btn voice-btn" id="sendBtn" onclick="sendMessage()" title="Send">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </div>
+
+            <!-- Hidden file input -->
+            <input type="file" id="chatFileInput" class="file-input" accept="image/*,video/*,.pdf,.doc,.docx" onchange="handleFileSelect(event)">
+        </div>
+
+        <!-- Scroll to bottom button -->
+        <button class="scroll-to-bottom" id="scrollToBottomBtn" onclick="scrollToBottom()">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Storage System -->
+    <script src="js/storage.js"></script>
+
+    <!-- Authentication -->
+    <script src="js/auth.js"></script>
+
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+    <!-- PWA -->
+    <script src="js/pwa.js"></script>
+
+    <script>
+    // Chat functionality
+    let messages = [];
+    let currentUser = 'user1'; // This would be dynamic in a real app
+
+    // Load messages from localStorage
+    function loadMessages() {
+        const stored = localStorage.getItem('chatMessages');
+        messages = stored ? JSON.parse(stored) : [];
+        displayMessages();
+    }
+
+    // Save messages to localStorage
+    function saveMessages() {
+        localStorage.setItem('chatMessages', JSON.stringify(messages));
+    }
+
+    // Display messages in chat
+    function displayMessages() {
+        const messagesContainer = document.getElementById('chatMessages');
+        messagesContainer.innerHTML = '';
+
+        messages.forEach(message => {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${message.sender === currentUser ? 'sent' : 'received'}`;
+
+            messageDiv.innerHTML = `
+                <div class="message-bubble">
+                    <div class="message-text">${message.text}</div>
+                    <div class="message-time">${formatTime(message.timestamp)}</div>
+                </div>
+            `;
+
+            messagesContainer.appendChild(messageDiv);
+        });
+
+        scrollToBottom();
+    }
+
+    // Send message
+    function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const text = input.value.trim();
+
+        if (!text) return;
+
+        const message = {
+            id: Date.now(),
+            text: text,
+            sender: currentUser,
+            timestamp: new Date().toISOString()
+        };
+
+        messages.push(message);
+        saveMessages();
+        displayMessages();
+
+        input.value = '';
+        updateSendButton();
+    }
+
+    // Format timestamp
+    function formatTime(timestamp) {
+        const date = new Date(timestamp);
+        return date.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        });
+    }
+
+    // Scroll to bottom
+    function scrollToBottom() {
+        const messagesContainer = document.getElementById('chatMessages');
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Update send button based on input
+    function updateSendButton() {
+        const input = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        if (input.value.trim()) {
+            sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+            sendBtn.onclick = sendMessage;
+        } else {
+            sendBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+            sendBtn.onclick = startVoiceRecording;
+        }
+    }
+
+    // Voice recording placeholder
+    function startVoiceRecording() {
+        alert('Voice recording feature will be implemented soon!');
+    }
+
+    // Handle file selection
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+        if (file) {
+            alert(`File selected: ${file.name}. File sharing will be implemented soon!`);
+        }
+    }
+
+    // Chat-specific functions
+    function toggleChatMenu() {
+        const menu = document.getElementById('chatMenu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleSettings() {
+        const panel = document.getElementById('settingsPanel');
+        panel.classList.toggle('show');
+    }
+
+    function toggleEmojiPicker() {
+        const picker = document.getElementById('emojiPicker');
+        picker.classList.toggle('show');
+
+        if (picker.classList.contains('show')) {
+            loadEmojis();
+        }
+    }
+
+    function toggleAttachMenu() {
+        const menu = document.getElementById('attachMenu');
+        menu.classList.toggle('show');
+    }
+
+    function selectFile(type) {
+        const fileInput = document.getElementById('chatFileInput');
+
+        switch(type) {
+            case 'photo':
+                fileInput.accept = 'image/*';
+                break;
+            case 'video':
+                fileInput.accept = 'video/*';
+                break;
+            case 'document':
+                fileInput.accept = '.pdf,.doc,.docx,.txt';
+                break;
+        }
+
+        fileInput.click();
+        toggleAttachMenu();
+    }
+
+    function handleInputKeydown(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            sendMessage();
+        }
+    }
+
+    function handleTyping() {
+        updateSendButton();
+    }
+
+    function searchMessages() {
+        const query = prompt('Search messages:');
+        if (query) {
+            const results = messages.filter(msg => 
+                msg.text.toLowerCase().includes(query.toLowerCase())
+            );
+            alert(`Found ${results.length} messages containing "${query}"`);
+        }
+    }
+
+    function viewContactInfo() {
+        alert('Contact info feature will be implemented soon!');
+        toggleChatMenu();
+    }
+
+    function selectMessages() {
+        alert('Select messages feature will be implemented soon!');
+        toggleChatMenu();
+    }
+
+    function muteNotifications() {
+        alert('Notifications muted!');
+        toggleChatMenu();
+    }
+
+    function clearChat() {
+        if (confirm('Clear all messages?')) {
+            messages = [];
+            saveMessages();
+            displayMessages();
+        }
+        toggleChatMenu();
+    }
+
+    function exportChat() {
+        const data = JSON.stringify(messages, null, 2);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `love-chat-export-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        toggleChatMenu();
+    }
+
+    function changeTheme(theme) {
+        const options = document.querySelectorAll('.theme-option');
+        options.forEach(opt => opt.classList.remove('active'));
+        event.target.classList.add('active');
+
+        localStorage.setItem('chatTheme', theme);
+        alert(`Theme changed to ${theme}`);
+    }
+
+    function toggleBackground() {
+        const enabled = document.getElementById('backgroundToggle').checked;
+        localStorage.setItem('chatBackground', enabled);
+
+        const background = document.querySelector('.whatsapp-background');
+        if (background) {
+            background.style.display = enabled ? 'block' : 'none';
+        }
+    }
+
+    function toggleSounds() {
+        const enabled = document.getElementById('soundsToggle').checked;
+        localStorage.setItem('chatSounds', enabled);
+        alert(`Sounds ${enabled ? 'enabled' : 'disabled'}`);
+    }
+
+    // Load emojis
+    function loadEmojis() {
+        const emojiGrid = document.getElementById('emojiGrid');
+        const emojis = ['😀', '😍', '🥰', '😘', '😊', '😂', '❤️', '💕', '💖', '💗', '💘', '💙', '💚', '💛', '💜', '🧡', '🖤', '🤍', '🤎', '💯', '🔥', '✨', '🌟', '⭐', '💫', '🌙', '☀️', '🌈', '🦄', '🎉', '🎊', '🎈', '🎀', '💐', '🌹', '🌺', '🌸', '🌷', '🌻'];
+
+        emojiGrid.innerHTML = emojis.map(emoji => 
+            `<span class="emoji-item" onclick="insertEmoji('${emoji}')">${emoji}</span>`
+        ).join('');
+    }
+
+    // Insert emoji
+    function insertEmoji(emoji) {
+        const input = document.getElementById('messageInput');
+        input.value += emoji;
+        input.focus();
+        updateSendButton();
+        toggleEmojiPicker();
+    }
+
+    // Show emoji category
+    function showEmojiCategory(category) {
+        document.querySelectorAll('.emoji-category-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+
+        // Load category-specific emojis
+        const categories = {
+            smileys: ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😍', '🥰', '😘'],
+            hearts: ['❤️', '💕', '💖', '💗', '💘', '💙', '💚', '💛', '💜', '🧡', '🖤', '🤍', '🤎', '💯'],
+            animals: ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐸', '🐵', '🐣'],
+            food: ['🍎', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🍈', '🍒', '🍑', '🥭', '🍍', '🥥', '🥝', '🍅', '🍆']
+        };
+
+        const emojiGrid = document.getElementById('emojiGrid');
+        emojiGrid.innerHTML = categories[category].map(emoji => 
+            `<span class="emoji-item" onclick="insertEmoji('${emoji}')">${emoji}</span>`
+        ).join('');
+    }
+
+    // Initialize presence
+    function initializePresence() {
+        const indicator = document.getElementById('onlineIndicator');
+        const status = document.getElementById('partnerStatus');
+
+        if (indicator && status) {
+            indicator.style.display = 'block';
+            status.textContent = 'online';
+        }
+    }
+
+    // Initialize chat when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        loadMessages();
+        initializePresence();
+        updateSendButton();
+
+        // Set up input event listener
+        const messageInput = document.getElementById('messageInput');
+        if (messageInput) {
+            messageInput.addEventListener('input', handleTyping);
+            messageInput.addEventListener('keypress', handleInputKeydown);
+        }
+
+        // Close menus when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.chat-menu') && !event.target.closest('.header-btn')) {
+                document.getElementById('chatMenu').style.display = 'none';
+            }
+            if (!event.target.closest('.emoji-picker') && !event.target.closest('.emoji-btn')) {
+                document.getElementById('emojiPicker').classList.remove('show');
+            }
+            if (!event.target.closest('.attach-menu') && !event.target.closest('.attach-btn')) {
+                document.getElementById('attachMenu').classList.remove('show');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

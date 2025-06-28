@@ -1,0 +1,114 @@
+Based on your codebase, here's a detailed prompt for the Replit Agent to create this exact romantic love app project:
+
+Prompt for Replit Agent: Create a Romantic Love App with MySQL Backend
+
+Create a comprehensive romantic web application called "Love App" with the following specifications:
+
+Project Structure & Technology Stack
+Backend:
+
+Flask web framework with Python 3.11+
+MySQL database using PyMySQL connector
+Flask-SQLAlchemy ORM for database operations
+Flask-Login for user authentication
+Flask-WTF for form handling
+Werkzeug for secure file uploads
+Gunicorn for production deployment
+Frontend:
+
+Bootstrap 5 responsive framework
+Custom romantic CSS with pink/purple color scheme
+AOS (Animate On Scroll) library for animations
+Mobile-first responsive design
+Progressive Web App (PWA) capabilities
+Database Models
+Create the following SQLAlchemy models in models.py:
+
+User model with fields: id, username, email, password_hash, first_name, last_name, profile_image, active, last_seen, created_at
+Message model for chat functionality with: id, sender_id, receiver_id, content, message_type (TEXT/IMAGE/VIDEO), file_url, timestamp, is_read, is_edited, deletion tracking fields
+MessageReaction model for emoji reactions: id, message_id, user_id, emoji, created_at
+PeriodData model for period tracking: id, user_id, last_period, cycle_length, updated_at
+FoodMemory model: id, user_id, place, dish, location, caption, priority, created_at
+PhotoMemory model: id, user_id, filename, caption, uploaded_at
+Application Features
+1. Authentication System
+Login/logout functionality
+Two predefined users: 'navaneet' (password: '112404') and 'darling' (password: '112404')
+Secure password hashing with Werkzeug
+Session management with Flask-Login
+2. WhatsApp-Style Chat System
+Real-time messaging between the two users
+Image and video file upload support
+Emoji reactions on messages
+Message deletion (for me/for everyone)
+Read receipts and typing indicators
+Mobile-responsive chat interface
+3. Romantic Content Pages
+Home page with animated typing effect and floating elements
+Why I Love You page with animated reason cards including: beautiful smile, special treatment, forgiveness, loyalty, kindness to animals, religious nature, beautiful eyes, sweet voice, family values, gentle heart
+Favorites page with movies, songs, quotes, and perfumes sections
+About Her page with comprehensive profile data including dress sizes, favorites, personality traits, important dates
+4. Interactive Features
+Food Memories with CRUD operations for restaurant/dish tracking
+Photo Gallery with upload/delete functionality
+Period Tracker with cycle predictions and history
+Journal page with daily affirmations and mood tracking
+Apology page with romantic content
+File Structure
+/
+├── app.py (main Flask application)
+├── main.py (entry point)
+├── models.py (database models)
+├── forms.py (WTF forms)
+├── setup_mysql.py (database setup script)
+├── pyproject.toml (dependencies)
+├── .replit (Nix configuration)
+├── static/
+│   ├── css/style.css (romantic styling)
+│   ├── js/main.js (frontend interactions)
+│   ├── uploads/ (file storage)
+│   └── manifest.json (PWA config)
+└── templates/
+    ├── base.html (responsive layout)
+    ├── auth/ (login/register pages)
+    └── [feature pages].html
+Styling Requirements
+Create a romantic theme with:
+
+CSS variables for consistent pink/purple color scheme
+Gradient backgrounds and romantic shadows
+Hover animations and smooth transitions
+Mobile hamburger navigation
+Responsive grid layouts
+Font combination: Dancing Script (headings) + Poppins (body)
+Database Configuration
+Use MySQL with PyMySQL connector
+Fallback to local MySQL if no DATABASE_URL environment variable
+Connection pooling and engine optimization
+Automatic table creation on startup
+Deployment Configuration
+Gunicorn WSGI server setup
+ProxyFix middleware for deployment
+Environment variable support for DATABASE_URL and SESSION_SECRET
+PWA manifest for mobile installation
+File upload security with allowed extensions
+Security Features
+Secure filename handling for uploads
+CSRF protection with Flask-WTF
+Password hashing with Werkzeug
+SQL injection protection with SQLAlchemy ORM
+Session management with secure cookies
+Mobile Optimization
+Responsive Bootstrap grid system
+Touch-friendly interface elements
+Mobile-specific CSS media queries
+PWA capabilities for app-like experience
+Optimized chat interface for mobile use
+Workflow Configuration
+Set up the run button to execute:
+
+python setup_mysql.py (database initialization)
+python main.py (start the application)
+The application should run on 0.0.0.0:5000 and be fully functional with all romantic features, chat system, and database persistence.
+
+This prompt will create the exact romantic love app project with all the features, styling, and functionality present in your current codebase.

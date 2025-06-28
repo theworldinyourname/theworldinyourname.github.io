@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}My Heartfelt Apology{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="apology-container">
+                <div class="text-center mb-5" data-aos="fade-down">
+                    <div class="broken-heart-container">
+                        <div class="broken-heart">💔</div>
+                        <div class="healing-heart">💖</div>
+                    </div>
+                    <h1 class="romantic-title apology-title">I'm Sorry</h1>
+                </div>
+                
+                <div class="apology-letter" data-aos="fade-up" data-aos-delay="200">
+                    <div class="letter-content">
+                        <div class="typewriter-text" id="apology-text"></div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
+                    <div class="promise-section">
+                        <h3 class="promise-title">My Promise to You</h3>
+                        <div class="promises">
+                            <div class="promise" data-aos="fade-right" data-aos-delay="500">
+                                <i class="fas fa-heart"></i>
+                                <span>To listen to you always</span>
+                            </div>
+                            <div class="promise" data-aos="fade-left" data-aos-delay="600">
+                                <i class="fas fa-hands-helping"></i>
+                                <span>To support you in everything</span>
+                            </div>
+                            <div class="promise" data-aos="fade-right" data-aos-delay="700">
+                                <i class="fas fa-shield-heart"></i>
+                                <span>To protect your heart</span>
+                            </div>
+                            <div class="promise" data-aos="fade-left" data-aos-delay="800">
+                                <i class="fas fa-infinity"></i>
+                                <span>To love u unconditonally</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="900">
+                    <a href="{{ url_for('home') }}" class="btn romantic-btn romantic-btn-primary">
+                        <i class="fas fa-home"></i> Take Me Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const apologyMessage = `My Dearest Darling,
+
+I know I've hurt you, and my heart breaks knowing that I caused you pain. You mean everything to me, and seeing you upset because of my actions is unbearable.
+
+I was wrong. I should have been more thoughtful, more understanding, more present. You deserve someone who listens to your heart, who values your feelings, and who never takes your love for granted.
+
+I'm not asking for immediate forgiveness. I know trust needs to be rebuilt. But I want you to know that I'm committed to being better, to being the partner you deserve.
+
+You are the light of my life, my best friend, my soulmate. I promise to do whatever it takes to make this right, to show you every day how much you mean to me.
+
+I love you more than words can express, and I'm so sorry for letting you down.
+
+Forever yours,
+Navu`;
+    
+    const textElement = document.getElementById('apology-text');
+    let charIndex = 0;
+    
+    function typeText() {
+        if (charIndex < apologyMessage.length) {
+            textElement.innerHTML = apologyMessage.substring(0, charIndex + 1).replace(/\n/g, '<br>');
+            charIndex++;
+            setTimeout(typeText, 50);
+        }
+    }
+    
+    // Start typing after a short delay
+    setTimeout(typeText, 1000);
+});
+</script>
+{% endblock %}

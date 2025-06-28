@@ -1,0 +1,311 @@
+
+{% extends "base.html" %}
+
+{% block title %}Your Favorites{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="text-center mb-5" data-aos="fade-down">
+        <h1 class="romantic-title">
+            <i class="fas fa-star text-romantic-pink"></i>
+            Your Beautiful Favorites
+        </h1>
+        <p class="lead romantic-subtitle">Everything that lights up your world</p>
+    </div>
+    
+    <!-- Food & Drink Section -->
+    <div class="favorites-section mb-5" data-aos="fade-up">
+        <h2 class="section-title">
+            <i class="fas fa-utensils"></i> Food & Drink Favorites
+        </h2>
+        <div class="row">
+            <!-- Eggs -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🥚</div>
+                    <h4>Egg Specialties</h4>
+                    <p><strong>Egg Rice & Egg Omelette</strong></p>
+                    <p><i class="fas fa-map-marker-alt text-romantic-pink"></i> Egg Point Vijayanagar</p>
+                    <small>Your go-to comfort food place!</small>
+                </div>
+            </div>
+            
+            <!-- Cakes -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🎂</div>
+                    <h4>Cakes (Priority Order)</h4>
+                    <p>1. <strong>Mississippi Mud Pie</strong></p>
+                    <p>2. <strong>Ferrero Rocher Cake</strong></p>
+                    <p>3. <strong>DBC Cake (Truffles)</strong></p>
+                    <p>4. <strong>Chocolate Cake (Retro Bakes)</strong></p>
+                </div>
+            </div>
+            
+            <!-- Cupcakes -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🧁</div>
+                    <h4>Cupcakes</h4>
+                    <p><strong>Red Velvet</strong></p>
+                    <p><strong>Chocolate Hazelnut</strong></p>
+                    <p><i class="fas fa-map-marker-alt text-romantic-pink"></i> Glens Bakehouse</p>
+                </div>
+            </div>
+            
+            <!-- Momos -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🥟</div>
+                    <h4>Momos</h4>
+                    <p><strong>Hot Tibetan Momos</strong></p>
+                    <p>Veg Steam & Paneer Steam</p>
+                    <p><i class="fas fa-map-marker-alt text-romantic-pink"></i> Global Village, RR Nagar</p>
+                </div>
+            </div>
+            
+            <!-- Street Food -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🍛</div>
+                    <h4>Street Food (Priority)</h4>
+                    <p>1. <strong>Tikki Puri</strong> (Liquidy Food)</p>
+                    <p>2. <strong>Golgappa, Pani Puri</strong></p>
+                    <p>3. <strong>Sev Puri</strong></p>
+                    <p>4. <strong>Paneer Pulav (Delhi's)</strong></p>
+                    <p>5. <strong>Paneer Bajji</strong></p>
+                </div>
+            </div>
+            
+            <!-- Ice Cream -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🍦</div>
+                    <h4>Ice Cream</h4>
+                    <p><strong>Regular:</strong> Black Currant, Polar Bear Coffee Boba</p>
+                    <p><strong>During Periods:</strong> Mississippi Mud, Cotton Candy (Baskin Robbins), Corner House (DBC)</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Second Row of Food -->
+        <div class="row">
+            <!-- Fast Food - McDonald's -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🍟</div>
+                    <h4>McDonald's (Priority)</h4>
+                    <p>1. <strong>Cheesy Fries</strong></p>
+                    <p>2. <strong>Peri Peri</strong></p>
+                    <p>3. <strong>Pizza Puff</strong></p>
+                    <p>4. <strong>Maharaja Burger</strong></p>
+                </div>
+            </div>
+            
+            <!-- Domino's -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🍕</div>
+                    <h4>Domino's (Priority)</h4>
+                    <p>1. <strong>Lava Cake</strong></p>
+                    <p>2. <strong>Garlic Bread</strong></p>
+                    <p>3. <strong>Zingy Parcel</strong></p>
+                </div>
+            </div>
+            
+            <!-- Chocolates -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🍫</div>
+                    <h4>Chocolates (Priority)</h4>
+                    <p>1. <strong>Twix</strong></p>
+                    <p>2. <strong>Ferrero Rocher</strong></p>
+                    <p>3. <strong>Hershey's Cookie & Creme</strong></p>
+                    <p>4. <strong>Kinder Schoko Bons Crispy</strong></p>
+                    <p>5. <strong>Roast & Almond Dairy Milk</strong></p>
+                </div>
+            </div>
+            
+            <!-- Desserts -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🍮</div>
+                    <h4>Desserts (Priority)</h4>
+                    <p>1. <strong>Churros & Chocolate</strong> (Taco Bell)</p>
+                    <p>2. <strong>Rasmalai</strong></p>
+                    <p>3. <strong>Rasgulla</strong></p>
+                    <p>4. <strong>Champakali</strong></p>
+                </div>
+            </div>
+            
+            <!-- Home Food -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🏠</div>
+                    <h4>Home Food (Priority)</h4>
+                    <p>1. <strong>Broccoli Rice</strong></p>
+                    <p>2. <strong>Palak Paneer</strong> (Mom's special)</p>
+                    <p>3. <strong>Ladyfinger's Gravy</strong> (Bhendekai Palya)</p>
+                </div>
+            </div>
+            
+            <!-- Drinks -->
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">☕</div>
+                    <h4>Drinks & More</h4>
+                    <p><strong>Drinks:</strong> Water, Filter Coffee (Dad's special)</p>
+                    <p><strong>Fruits:</strong> Strawberry, Jackfruit (periods)</p>
+                    <p><strong>Ultimate Favorite:</strong> Pasta (any kind)</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Special Food Places -->
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="favorite-card special-place">
+                    <div class="favorite-emoji">🏆</div>
+                    <h4>Favorite Place to Eat</h4>
+                    <p><strong>Kapoor's Cafe, Rajajinagar</strong></p>
+                    <p>Parota - Your absolute favorite!</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="favorite-card special-place">
+                    <div class="favorite-emoji">🛍️</div>
+                    <h4>Lulu Mall Favorites</h4>
+                    <p>1. <strong>Paneer Pulav</strong></p>
+                    <p>2. <strong>Plum Cake</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Movies & Entertainment Section -->
+    <div class="favorites-section mb-5" data-aos="fade-up">
+        <h2 class="section-title">
+            <i class="fas fa-film"></i> Movies & Entertainment
+        </h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🎬</div>
+                    <h4>Hollywood Favorites</h4>
+                    <p><strong>Avengers: Age of Ultron</strong> - Your absolute favorite</p>
+                    <p><strong>Fifty Shades of Grey</strong> - Your romantic pick</p>
+                    <small>Favorite Characters: Iron Man > Doctor Strange > Thor > Scarlet Witch > Spidey</small>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🎭</div>
+                    <h4>Regional Cinema</h4>
+                    <p><strong>Googly</strong> - Your Kannada favorite</p>
+                    <p><strong>Baahubali</strong> - Telugu masterpiece</p>
+                    <p><strong>Nagina (Sridevi)</strong> - 90s classic</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🎪</div>
+                    <h4>Favorite Genres</h4>
+                    <p>1. Romance 💕</p>
+                    <p>2. Horror 👻</p>
+                    <p>3. Thriller 🔥</p>
+                    <p>4. Romantic Comedy 😍</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Music Section -->
+    <div class="favorites-section mb-5" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="section-title">
+            <i class="fas fa-music"></i> Music & Artists
+        </h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🎤</div>
+                    <h4>Indian Artists</h4>
+                    <p><strong>Shreya Ghoshal</strong> - Your favorite female voice</p>
+                    <p><strong>Arijit Singh</strong> - The king of romance</p>
+                    <p>Bollywood songs hold your heart ❤️</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🌟</div>
+                    <h4>International Favorites</h4>
+                    <p><strong>Taylor Swift</strong> - Your global queen</p>
+                    <p><strong>Selena Gomez</strong> - Pop perfection</p>
+                    <p><strong>Adele</strong> - Soulful melodies</p>
+                    <p><strong>Sabrina Carpenter</strong> - Sweet vibes</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🎵</div>
+                    <h4>Special Artists</h4>
+                    <p><strong>The Weeknd</strong> - Your R&B love</p>
+                    <p><strong>Jennie (Blackpink)</strong> - K-pop bias</p>
+                    <p><strong>Maroon 5</strong> - Your favorite band</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Personal Preferences Section -->
+    <div class="favorites-section mb-5" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="section-title">
+            <i class="fas fa-heart"></i> Personal Preferences
+        </h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🌸</div>
+                    <h4>Favorite Flowers</h4>
+                    <p>1. <strong>Sunflower</strong> ☀️</p>
+                    <p>2. <strong>White Roses</strong> 🤍</p>
+                    <p>3. <strong>Blue Orchids</strong> 💙</p>
+                    <p>4. <strong>Mixed Roses</strong> 🌹</p>
+                    <p>5. <strong>Red Roses</strong> ❤️</p>
+                    <p>6. <strong>Yellow Roses</strong> 💛</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🔤</div>
+                    <h4>Letters & Numbers</h4>
+                    <p><strong>Favorite Alphabets:</strong> A & S</p>
+                    <p>These letters are special to your heart 💕</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="favorite-card">
+                    <div class="favorite-emoji">🍺</div>
+                    <h4>Fun Combinations</h4>
+                    <p><strong>Alcohol Sides:</strong></p>
+                    <p>• Vodka Panipuri</p>
+                    <p>• Bacardi Balekai Bajji</p>
+                    <p>Your unique taste combinations!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.special-place {
+    background: linear-gradient(135deg, #ffeef5 0%, #f8f0ff 100%);
+    border: 2px solid var(--romantic-pink);
+}
+
+.special-place:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(255, 107, 157, 0.3);
+}
+</style>
+{% endblock %}

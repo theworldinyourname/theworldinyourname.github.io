@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+{% block title %}Period Tracker{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h1 class="romantic-title">Period Tracker 🌸</h1>
+                <p class="romantic-subtitle">Keep track of your wellness journey</p>
+            </div>
+            
+            <!-- Desktop/Mobile Responsive Layout -->
+            <div class="row">
+                <!-- Current Status & Quick Update -->
+                <div class="col-lg-4 mb-4">
+                    <!-- Current Status -->
+                    <div class="romantic-card mb-4" data-aos="fade-right">
+                        <div class="card-header">
+                            <h3><i class="fas fa-calendar-heart"></i> Current Status</h3>
+                        </div>
+                        <div class="card-body">
+                            {% if days_until_next is not none %}
+                                {% if days_until_next <= 0 %}
+                                    <div class="period-status active">
+                                        <i class="fas fa-circle text-danger"></i>
+                                        <span>Period time</span>
+                                        <small class="d-block">Take care of yourself</small>
+                                    </div>
+                                {% else %}
+                                    <div class="period-status inactive">
+                                        <i class="fas fa-circle text-success"></i>
+                                        <span>Not on period</span>
+                                        <small class="d-block">{{ days_until_next }} days until next</small>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                <div class="period-status inactive">
+                                    <i class="fas fa-circle text-muted"></i>
+                                    <span>No data yet</span>
+                                    <small class="d-block">Add your last period to start tracking</small>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Update -->
+                    <div class="romantic-card" data-aos="fade-right" data-aos-delay="100">
+                        <div class="card-header">
+                            <h3><i class="fas fa-plus-circle"></i> Quick Update</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ url_for('update_period') }}">
+                                <div class="mb-3">
+                                    <label class="form-label">Last Period Date</label>
+                                    <input type="date" 
+                                           name="last_period" 
+                                           class="form-control romantic-input"
+                                           value="{{ last_period.strftime('%Y-%m-%d') if last_period else '' }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Cycle Length (days)</label>
+                                    <input type="number" 
+                                           name="cycle_length" 
+                                           class="form-control romantic-input"
+                                           value="{{ cycle_length or 28 }}"
+                                           min="21" max="35">
+                                </div>
+                                <button type="submit" class="btn romantic-btn romantic-btn-primary w-100">
+                                    <i class="fas fa-save"></i> Update
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Content Area -->
+                <div class="col-lg-8">
+                    <!-- Upcoming Predictions -->
+                    {% if predictions %}
+                    <div class="romantic-card mb-4" data-aos="fade-up">
+                        <div class="card-header">
+                            <h3><i class="fas fa-crystal-ball"></i> Upcoming Predictions</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                {% for prediction in predictions %}
+                                <div class="col-md-6 col-xl-4 mb-3">
+                                    <div class="prediction-card enhanced">
+                                        <div class="prediction-header">
+                                            <div class="prediction-number">{{ loop.index }}</div>
+                                            <div class="prediction-type">Next Period</div>
+                                        </div>
+                                        <div class="prediction-date">{{ prediction.formatted_date }}</div>
+                                        <div class="prediction-day">{{ prediction.date.strftime('%A') }}</div>
+                                        <div class="prediction-countdown">
+                                            {% if prediction.days_until > 0 %}
+                                                In {{ prediction.days_until }} days
+                                            {% elif prediction.days_until == 0 %}
+                                                Today
+                                            {% else %}
+                                            {{ prediction.days_until|abs }} days ago
+                                            {% endif %}
+                                        </div>
+                                        <div class="prediction-duration">
+                                            <small class="text-muted">
+                                                <i class="fas fa-clock"></i> {{ prediction.duration }}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Period History -->
+                    {% if period_history %}
+                    <div class="romantic-card mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Period History</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="period-history-list">
+                                {% for period in period_history %}
+                                <div class="period-history-item">
+                                    <div class="period-date">
+                                        <i class="fas fa-calendar-day"></i>
+                                        {{ period.formatted_date }}
+                                    </div>
+                                    <div class="period-details">
+                                        <span class="period-day">{{ period.date.strftime('%A') }}</span>
+                                        {% if period.cycle_days %}
+                                            <span class="period-cycle">{{ period.cycle_days }} day cycle</span>
+                                        {% endif %}
+                                        <span class="period-duration">
+                                            <i class="fas fa-clock"></i> {{ period.duration }} days
+                                        </span>
+                                    </div>
+                                    <div class="period-status-badge">
+                                        {% if period.is_past %}
+                                            <span class="badge bg-secondary">Past</span>
+                                        {% elif period.is_current %}
+                                            <span class="badge bg-danger">Current</span>
+                                        {% else %}
+                                            <span class="badge bg-primary">Predicted</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Cycle Statistics -->
+                    <div class="romantic-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-line"></i> Cycle Statistics</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-6 col-md-3">
+                                    <div class="stat-item">
+                                        <div class="stat-number">{{ cycle_length or 28 }}</div>
+                                        <div class="stat-label">Average Cycle</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="stat-item">
+                                        <div class="stat-number">3</div>
+                                        <div class="stat-label">Period Days</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="stat-item">
+                                        <div class="stat-number">{{ days_until_next or 0 }}</div>
+                                        <div class="stat-label">Days Until Next</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="stat-item">
+                                        <div class="stat-number">{{ period_history|length if period_history else 0 }}</div>
+                                        <div class="stat-label">Tracked Periods</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Care Messages -->
+            {% if predictions %}
+            <div class="romantic-card mt-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-header">
+                    <h3><i class="fas fa-heart"></i> Love & Care Reminders</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="care-item">
+                                <div class="care-icon">🌸</div>
+                                <h4>Before Your Period</h4>
+                                <p>Stock up on your favorite snacks and prepare for cozy self-care time.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="care-item">
+                                <div class="care-icon">💝</div>
+                                <h4>During Your Period</h4>
+                                <p>Take warm baths, drink lots of water, and know that I'm here for you.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="care-item">
+                                <div class="care-icon">🌈</div>
+                                <h4>After Your Period</h4>
+                                <p>Great time for new adventures and treating yourself to something special.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Set max date to today
+    const dateInput = document.getElementById('last_period');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.max = today;
+    
+    // Add gentle animations to care messages
+    const careItems = document.querySelectorAll('.care-item');
+    careItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.2}s`;
+    });
+});
+</script>
+{% endblock %}
