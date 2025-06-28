@@ -1,379 +1,450 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Journal</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
+        />
+        <title>Journal</title>
 
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#ff6b9d">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Love App">
+        <!-- PWA Meta Tags -->
+        <meta name="theme-color" content="#ff6b9d" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="Love App" />
 
-    <!-- iOS Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Love App">
-    <meta name="format-detection" content="telephone=no">
+        <!-- iOS Meta Tags -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Love App" />
+        <meta name="format-detection" content="telephone=no" />
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="manifest.json" />
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap 5 CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Font Awesome Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
 
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <!-- AOS Animation Library -->
+        <link
+            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+            rel="stylesheet"
+        />
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top romantic-nav">
-        <div class="container">
-            <a class="navbar-brand romantic-brand" href="index.html">
-                <i class="fas fa-heart"></i> 14344
-            </a>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav
+            class="navbar navbar-expand-lg navbar-light fixed-top romantic-nav"
+        >
+            <div class="container">
+                <a class="navbar-brand romantic-brand" href="index.html">
+                    <i class="fas fa-heart"></i> 14344
+                </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="why-i-love-you.html">Why I Love You</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about-her.html">About Her</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="favorites.html">Favorites</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="food-memories.html">Food Places</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="photo-gallery.html">Memories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="period-tracker.html">Period Tracker</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="journal.html">Journal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="chat.html">Chat</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="apology.html">Apology</a>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="why-i-love-you.html"
+                                >Why I Love You</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about-her.html"
+                                >About Her</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="favorites.html"
+                                >Favorites</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="food-memories.html"
+                                >Food Places</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="photo-gallery.html"
+                                >Memories</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="period-tracker.html"
+                                >Period Tracker</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="journal.html"
+                                >Journal</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="chat.html">Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="apology.html">Apology</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container py-5 mt-5">
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h1 class="romantic-title">
+                    <i class="fas fa-book-heart text-romantic-pink"></i>
+                    Daily Love Messages
+                </h1>
+                <p class="lead romantic-subtitle">
+                    Beautiful words for my darling every day
+                </p>
+            </div>
+
+            <!-- Daily Message Display -->
+            <div class="romantic-card mb-5" data-aos="fade-up">
+                <div class="card-header text-center">
+                    <h3><i class="fas fa-heart"></i> Today's Message</h3>
+                    <small class="text-muted" id="todayDate"></small>
+                </div>
+                <div class="card-body text-center">
+                    <div class="daily-message-display" id="todayMessage">
+                        <!-- Today's message will be displayed here -->
+                    </div>
+                    <div class="mt-3">
+                        <button
+                            class="btn romantic-btn romantic-btn-secondary"
+                            onclick="getRandomMessage()"
+                        >
+                            <i class="fas fa-random"></i> Get Random Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Love Messages Collection -->
+            <div
+                class="romantic-card mb-5"
+                data-aos="fade-up"
+                data-aos-delay="100"
+            >
+                <div class="card-header">
+                    <h3>
+                        <i class="fas fa-heart-circle"></i> Daily Love Messages
+                    </h3>
+                    <p class="mb-0 text-muted">
+                        Beautiful messages to brighten her day
+                    </p>
+                </div>
+                <div class="card-body">
+                    <div class="row" id="messagesContainer">
+                        <!-- Messages will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Love Letters by Mood -->
+            <div class="romantic-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header">
+                    <h3>
+                        <i class="fas fa-envelope-heart"></i> Letters by Mood
+                    </h3>
+                    <p class="mb-0 text-muted">
+                        Special letters for different moments
+                    </p>
+                </div>
+                <div class="card-body">
+                    <div class="row" id="lettersContainer">
+                        <!-- Letters will be loaded here -->
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
 
-    <!-- Main Content -->
-    <div class="container py-5 mt-5">
-        <div class="text-center mb-5" data-aos="fade-down">
-            <h1 class="romantic-title">
-                <i class="fas fa-book-heart text-romantic-pink"></i>
-                Daily Love Messages
-            </h1>
-            <p class="lead romantic-subtitle">Beautiful words for my darling every day</p>
-        </div>
-
-        <!-- Daily Message Display -->
-        <div class="romantic-card mb-5" data-aos="fade-up">
-            <div class="card-header text-center">
-                <h3><i class="fas fa-heart"></i> Today's Message</h3>
-                <small class="text-muted" id="todayDate"></small>
-            </div>
-            <div class="card-body text-center">
-                <div class="daily-message-display" id="todayMessage">
-                    <!-- Today's message will be displayed here -->
-                </div>
-                <div class="mt-3">
-                    <button class="btn romantic-btn romantic-btn-secondary" onclick="getRandomMessage()">
-                        <i class="fas fa-random"></i> Get Random Message
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Love Messages Collection -->
-        <div class="romantic-card mb-5" data-aos="fade-up" data-aos-delay="100">
-            <div class="card-header">
-                <h3><i class="fas fa-heart-circle"></i> Daily Love Messages</h3>
-                <p class="mb-0 text-muted">Beautiful messages to brighten her day</p>
-            </div>
-            <div class="card-body">
-                <div class="row" id="messagesContainer">
-                    <!-- Messages will be loaded here -->
+        <!-- Letter Modal -->
+        <div class="modal fade" id="letterModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content romantic-modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="letterModalTitle">
+                            Love Letter
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                        ></button>
+                    </div>
+                    <div class="modal-body" id="letterModalBody">
+                        <!-- Letter content will be displayed here -->
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn romantic-btn romantic-btn-primary"
+                            data-bs-dismiss="modal"
+                        >
+                            <i class="fas fa-heart"></i> Close
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Love Letters by Mood -->
-        <div class="romantic-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="card-header">
-                <h3><i class="fas fa-envelope-heart"></i> Letters by Mood</h3>
-                <p class="mb-0 text-muted">Special letters for different moments</p>
-            </div>
-            <div class="card-body">
-                <div class="row" id="lettersContainer">
-                    <!-- Letters will be loaded here -->
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Letter Modal -->
-    <div class="modal fade" id="letterModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content romantic-modal">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="letterModalTitle">Love Letter</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body" id="letterModalBody">
-                    <!-- Letter content will be displayed here -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn romantic-btn romantic-btn-primary" data-bs-dismiss="modal">
-                        <i class="fas fa-heart"></i> Close
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- AOS Animation -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Storage System -->
-    <script src="js/storage.js"></script>
-    
-    <!-- Authentication -->
-    <script src="js/auth.js"></script>
-    
-    <!-- Main JS -->
-    <script src="js/main.js"></script>
-    
-    <!-- PWA -->
-    <script src="js/pwa.js"></script>
+        <!-- Storage System -->
+        <script src="js/storage.js"></script>
 
-    <style>
-    .daily-message-display {
-        background: linear-gradient(135deg, #ffeef5 0%, #f8f0ff 100%);
-        padding: 2rem;
-        border-radius: 20px;
-        border: 2px solid var(--romantic-pink);
-        font-size: 1.1rem;
-        line-height: 1.6;
-        color: var(--romantic-purple);
-        font-style: italic;
-        position: relative;
-    }
+        <!-- Authentication -->
+        <script src="js/auth.js"></script>
 
-    .daily-message-display::before {
-        content: '"';
-        font-size: 4rem;
-        color: var(--romantic-pink);
-        position: absolute;
-        top: -10px;
-        left: 20px;
-        font-family: serif;
-    }
+        <!-- Main JS -->
+        <script src="js/main.js"></script>
 
-    .daily-message-display::after {
-        content: '"';
-        font-size: 4rem;
-        color: var(--romantic-pink);
-        position: absolute;
-        bottom: -30px;
-        right: 20px;
-        font-family: serif;
-    }
+        <!-- PWA -->
+        <script src="js/pwa.js"></script>
 
-    .message-card {
-        background: white;
-        border-radius: 15px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        border-left: 4px solid var(--romantic-pink);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        height: 100%;
-    }
+        <style>
+            .daily-message-display {
+                background: linear-gradient(135deg, #ffeef5 0%, #f8f0ff 100%);
+                padding: 2rem;
+                border-radius: 20px;
+                border: 2px solid var(--romantic-pink);
+                font-size: 1.1rem;
+                line-height: 1.6;
+                color: var(--romantic-purple);
+                font-style: italic;
+                position: relative;
+            }
 
-    .message-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
-        border-left-color: var(--romantic-purple);
-    }
+            .daily-message-display::before {
+                content: '"';
+                font-size: 4rem;
+                color: var(--romantic-pink);
+                position: absolute;
+                top: -10px;
+                left: 20px;
+                font-family: serif;
+            }
 
-    .message-text {
-        color: var(--romantic-purple);
-        line-height: 1.5;
-        font-size: 0.95rem;
-        margin: 0;
-    }
+            .daily-message-display::after {
+                content: '"';
+                font-size: 4rem;
+                color: var(--romantic-pink);
+                position: absolute;
+                bottom: -30px;
+                right: 20px;
+                font-family: serif;
+            }
 
-    .message-heart {
-        font-size: 2rem;
-        text-align: center;
-        margin-bottom: 1rem;
-        animation: heartBeat 2s ease-in-out infinite;
-    }
+            .message-card {
+                background: white;
+                border-radius: 15px;
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+                border-left: 4px solid var(--romantic-pink);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                cursor: pointer;
+                height: 100%;
+            }
 
-    @keyframes heartBeat {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-    }
+            .message-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+                border-left-color: var(--romantic-purple);
+            }
 
-    .message-footer {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255, 107, 157, 0.2);
-        text-align: center;
-    }
+            .message-text {
+                color: var(--romantic-purple);
+                line-height: 1.5;
+                font-size: 0.95rem;
+                margin: 0;
+            }
 
-    .message-day {
-        color: var(--romantic-pink);
-        font-weight: 500;
-        font-style: italic;
-    }
+            .message-heart {
+                font-size: 2rem;
+                text-align: center;
+                margin-bottom: 1rem;
+                animation: heartBeat 2s ease-in-out infinite;
+            }
 
-    .letter-card {
-        background: linear-gradient(135deg, var(--romantic-light-pink) 0%, var(--romantic-lavender) 100%);
-        border-radius: 20px;
-        padding: 1.5rem;
-        text-align: center;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        height: 100%;
-        border: 2px solid transparent;
-    }
+            @keyframes heartBeat {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.1);
+                }
+            }
 
-    .letter-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--romantic-pink);
-        box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
-    }
+            .message-footer {
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(255, 107, 157, 0.2);
+                text-align: center;
+            }
 
-    .letter-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: var(--romantic-pink);
-    }
+            .message-day {
+                color: var(--romantic-pink);
+                font-weight: 500;
+                font-style: italic;
+            }
 
-    .letter-title {
-        font-family: 'Dancing Script', cursive;
-        font-size: 1.5rem;
-        color: var(--romantic-purple);
-        margin-bottom: 0.5rem;
-    }
+            .letter-card {
+                background: linear-gradient(
+                    135deg,
+                    var(--romantic-light-pink) 0%,
+                    var(--romantic-lavender) 100%
+                );
+                border-radius: 20px;
+                padding: 1.5rem;
+                text-align: center;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                height: 100%;
+                border: 2px solid transparent;
+            }
 
-    .letter-description {
-        color: #666;
-        font-size: 0.9rem;
-        margin: 0;
-    }
+            .letter-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--romantic-pink);
+                box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+            }
 
-    .romantic-modal .modal-content {
-        border-radius: 20px;
-        border: none;
-        overflow: hidden;
-    }
+            .letter-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                color: var(--romantic-pink);
+            }
 
-    .romantic-modal .modal-header {
-        background: var(--romantic-gradient);
-        color: white;
-        border: none;
-    }
+            .letter-title {
+                font-family: "Dancing Script", cursive;
+                font-size: 1.5rem;
+                color: var(--romantic-purple);
+                margin-bottom: 0.5rem;
+            }
 
-    .romantic-modal .modal-body {
-        padding: 2rem;
-        background: linear-gradient(135deg, #ffeef5 0%, #f8f0ff 100%);
-    }
+            .letter-description {
+                color: #666;
+                font-size: 0.9rem;
+                margin: 0;
+            }
 
-    .romantic-modal .modal-footer {
-        border: none;
-        background: #f8f9fa;
-    }
+            .romantic-modal .modal-content {
+                border-radius: 20px;
+                border: none;
+                overflow: hidden;
+            }
 
-    .letter-content {
-        color: var(--romantic-purple);
-        line-height: 1.8;
-        font-size: 1.05rem;
-        white-space: pre-line;
-    }
+            .romantic-modal .modal-header {
+                background: var(--romantic-gradient);
+                color: white;
+                border: none;
+            }
 
-    @media (max-width: 768px) {
-        .daily-message-display {
-            padding: 1.5rem;
-            font-size: 1rem;
-        }
+            .romantic-modal .modal-body {
+                padding: 2rem;
+                background: linear-gradient(135deg, #ffeef5 0%, #f8f0ff 100%);
+            }
 
-        .daily-message-display::before,
-        .daily-message-display::after {
-            font-size: 3rem;
-        }
+            .romantic-modal .modal-footer {
+                border: none;
+                background: #f8f9fa;
+            }
 
-        .message-card {
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
+            .letter-content {
+                color: var(--romantic-purple);
+                line-height: 1.8;
+                font-size: 1.05rem;
+                white-space: pre-line;
+            }
 
-        .letter-card {
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
+            @media (max-width: 768px) {
+                .daily-message-display {
+                    padding: 1.5rem;
+                    font-size: 1rem;
+                }
 
-        .letter-icon {
-            font-size: 2.5rem;
-        }
+                .daily-message-display::before,
+                .daily-message-display::after {
+                    font-size: 3rem;
+                }
 
-        .letter-title {
-            font-size: 1.3rem;
-        }
-    }
-    </style>
+                .message-card {
+                    padding: 1rem;
+                    margin-bottom: 1rem;
+                }
 
-    <script>
-    const dailyMessages = [
-        "You light up every room you enter, and my heart skips a beat every time I see your smile.",
-        "Today is going to be amazing because you're in it. You have the power to make any day beautiful.",
-        "Remember that you are loved beyond measure, cherished beyond words, and valued beyond compare.",
-        "Your kindness makes the world a better place. Thank you for being the incredible person you are.",
-        "Every morning I wake up grateful that you're in my life. You are my greatest blessing.",
-        "You are stronger than you know, braver than you feel, and more loved than you can imagine.",
-        "Your dreams are valid, your goals are achievable, and your heart is pure gold.",
-        "The world is lucky to have someone as wonderful as you. Keep shining, beautiful soul."
-    ];
+                .letter-card {
+                    padding: 1rem;
+                    margin-bottom: 1rem;
+                }
 
-    const letters = {
-        happy: {
-            title: "When You're Happy",
-            icon: "😊",
-            description: "A celebration of your beautiful joy",
-            content: `My Beautiful Love,
+                .letter-icon {
+                    font-size: 2.5rem;
+                }
+
+                .letter-title {
+                    font-size: 1.3rem;
+                }
+            }
+        </style>
+
+        <script>
+            const dailyMessages = [
+                "You light up every room you enter, and my heart skips a beat every time I see your smile.",
+                "Today is going to be amazing because you're in it. You have the power to make any day beautiful.",
+                "Remember that you are loved beyond measure, cherished beyond words, and valued beyond compare.",
+                "Your kindness makes the world a better place. Thank you for being the incredible person you are.",
+                "Every morning I wake up grateful that you're in my life. You are my greatest blessing.",
+                "You are stronger than you know, braver than you feel, and more loved than you can imagine.",
+                "Your dreams are valid, your goals are achievable, and your heart is pure gold.",
+                "The world is lucky to have someone as wonderful as you. Keep shining, beautiful soul.",
+            ];
+
+            const letters = {
+                happy: {
+                    title: "When You're Happy",
+                    icon: "😊",
+                    description: "A celebration of your beautiful joy",
+                    content: `My Beautiful Love,
 
 Seeing you happy is my favorite sight in the entire world! Your joy is contagious, and it fills my heart with such warmth and love.
 
@@ -384,13 +455,13 @@ Keep celebrating every moment of happiness, no matter how big or small. You dese
 Dance, laugh, sing, and be your amazing self. I'm here cheering you on every step of the way!
 
 With all my love and celebration,
-Your biggest fan 💕`
-        },
-        sad: {
-            title: "When You're Sad",
-            icon: "🤗",
-            description: "Comfort for difficult moments",
-            content: `My Precious Heart,
+Your biggest fan 💕`,
+                },
+                sad: {
+                    title: "When You're Sad",
+                    icon: "🤗",
+                    description: "Comfort for difficult moments",
+                    content: `My Precious Heart,
 
 I wish I could wrap you in the biggest, warmest hug right now and hold you until all the sadness melts away. It breaks my heart to know you're hurting, but I want you to know that it's okay to feel sad sometimes.
 
@@ -403,13 +474,13 @@ I'm here for you, always. Whether you need someone to listen, a shoulder to cry 
 You are loved, you are valued, and you are going to be okay.
 
 With endless love and support,
-Your safe place ❤️`
-        },
-        stressed: {
-            title: "When You're Stressed",
-            icon: "🌸",
-            description: "Peace for overwhelming times",
-            content: `My Sweet Angel,
+Your safe place ❤️`,
+                },
+                stressed: {
+                    title: "When You're Stressed",
+                    icon: "🌸",
+                    description: "Peace for overwhelming times",
+                    content: `My Sweet Angel,
 
 Take a deep breath with me. In... and out. You're doing so much better than you think you are.
 
@@ -424,13 +495,13 @@ I believe in you completely. You have everything within you to handle whatever c
 Take care of yourself today. Rest when you need to. You are worthy of peace and calm.
 
 With all my faith in you,
-Your calming presence 🌿`
-        },
-        motivation: {
-            title: "Daily Motivation",
-            icon: "⭐",
-            description: "Encouragement for your dreams",
-            content: `My Inspiring Darling,
+Your calming presence 🌿`,
+                },
+                motivation: {
+                    title: "Daily Motivation",
+                    icon: "⭐",
+                    description: "Encouragement for your dreams",
+                    content: `My Inspiring Darling,
 
 Today is a new page in your beautiful story, and you get to decide what you write on it.
 
@@ -445,89 +516,106 @@ I'm your biggest cheerleader, and I'll be here supporting you through every vict
 Go out there and show the world how amazing you are!
 
 With endless belief in you,
-Your proud supporter 🎯`
-        }
-    };
+Your proud supporter 🎯`,
+                },
+            };
 
-    let letterModal = null;
+            let letterModal = null;
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
+            document.addEventListener("DOMContentLoaded", function () {
+                // Initialize AOS
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                });
 
-        // Initialize modal
-        letterModal = new bootstrap.Modal(document.getElementById('letterModal'));
+                // Initialize modal
+                letterModal = new bootstrap.Modal(
+                    document.getElementById("letterModal"),
+                );
 
-        // Set today's date
-        const today = new Date();
-        document.getElementById('todayDate').textContent = today.toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
+                // Set today's date
+                const today = new Date();
+                document.getElementById("todayDate").textContent =
+                    today.toLocaleDateString("en-US", {
+                        weekday: "long",
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    });
 
-        // Display today's message
-        displayTodayMessage();
+                // Display today's message
+                displayTodayMessage();
 
-        // Load all messages
-        loadMessages();
+                // Load all messages
+                loadMessages();
 
-        // Load letters
-        loadLetters();
-    });
+                // Load letters
+                loadLetters();
+            });
 
-    function displayTodayMessage() {
-        const today = new Date();
-        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-        const messageIndex = dayOfYear % dailyMessages.length;
-        
-        document.getElementById('todayMessage').textContent = dailyMessages[messageIndex];
-    }
+            function displayTodayMessage() {
+                const today = new Date();
+                const dayOfYear = Math.floor(
+                    (today - new Date(today.getFullYear(), 0, 0)) /
+                        1000 /
+                        60 /
+                        60 /
+                        24,
+                );
+                const messageIndex = dayOfYear % dailyMessages.length;
 
-    function getRandomMessage() {
-        const randomIndex = Math.floor(Math.random() * dailyMessages.length);
-        document.getElementById('todayMessage').textContent = dailyMessages[randomIndex];
-        
-        // Add animation
-        const messageEl = document.getElementById('todayMessage');
-        messageEl.style.transform = 'scale(0.95)';
-        messageEl.style.opacity = '0.7';
-        
-        setTimeout(() => {
-            messageEl.style.transform = 'scale(1)';
-            messageEl.style.opacity = '1';
-        }, 200);
-    }
+                document.getElementById("todayMessage").textContent =
+                    dailyMessages[messageIndex];
+            }
 
-    function loadMessages() {
-        const container = document.getElementById('messagesContainer');
-        
-        container.innerHTML = dailyMessages.map((message, index) => `
+            function getRandomMessage() {
+                const randomIndex = Math.floor(
+                    Math.random() * dailyMessages.length,
+                );
+                document.getElementById("todayMessage").textContent =
+                    dailyMessages[randomIndex];
+
+                // Add animation
+                const messageEl = document.getElementById("todayMessage");
+                messageEl.style.transform = "scale(0.95)";
+                messageEl.style.opacity = "0.7";
+
+                setTimeout(() => {
+                    messageEl.style.transform = "scale(1)";
+                    messageEl.style.opacity = "1";
+                }, 200);
+            }
+
+            function loadMessages() {
+                const container = document.getElementById("messagesContainer");
+
+                container.innerHTML = dailyMessages
+                    .map(
+                        (message, index) => `
             <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 50}">
                 <div class="message-card" onclick="showMessage('${message.replace(/'/g, "\\'")}')">
                     <div class="message-heart">💖</div>
                     <p class="message-text">${message}</p>
-                    <div class="message-footer">
-                        <small class="message-day">Day ${index + 1}</small>
-                    </div>
+                    
                 </div>
             </div>
-        `).join('');
+        `,
+                    )
+                    .join("");
 
-        // Trigger AOS refresh for new elements
-        if (typeof AOS !== 'undefined') {
-            AOS.refresh();
-        }
-    }
+                // Trigger AOS refresh for new elements
+                if (typeof AOS !== "undefined") {
+                    AOS.refresh();
+                }
+            }
 
-    function loadLetters() {
-        const container = document.getElementById('lettersContainer');
-        
-        container.innerHTML = Object.entries(letters).map(([key, letter], index) => `
+            function loadLetters() {
+                const container = document.getElementById("lettersContainer");
+
+                container.innerHTML = Object.entries(letters)
+                    .map(
+                        ([key, letter], index) => `
             <div class="col-md-6 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="${index * 100}">
                 <div class="letter-card" onclick="showLetter('${key}')">
                     <div class="letter-icon">${letter.icon}</div>
@@ -535,35 +623,39 @@ Your proud supporter 🎯`
                     <p class="letter-description">${letter.description}</p>
                 </div>
             </div>
-        `).join('');
+        `,
+                    )
+                    .join("");
 
-        // Trigger AOS refresh for new elements
-        if (typeof AOS !== 'undefined') {
-            AOS.refresh();
-        }
-    }
+                // Trigger AOS refresh for new elements
+                if (typeof AOS !== "undefined") {
+                    AOS.refresh();
+                }
+            }
 
-    function showMessage(message) {
-        document.getElementById('letterModalTitle').textContent = 'Daily Love Message';
-        document.getElementById('letterModalBody').innerHTML = `
+            function showMessage(message) {
+                document.getElementById("letterModalTitle").textContent =
+                    "Daily Love Message";
+                document.getElementById("letterModalBody").innerHTML = `
             <div class="letter-content">${message}</div>
         `;
-        letterModal.show();
-    }
+                letterModal.show();
+            }
 
-    function showLetter(letterKey) {
-        const letter = letters[letterKey];
-        if (!letter) return;
+            function showLetter(letterKey) {
+                const letter = letters[letterKey];
+                if (!letter) return;
 
-        document.getElementById('letterModalTitle').textContent = letter.title;
-        document.getElementById('letterModalBody').innerHTML = `
+                document.getElementById("letterModalTitle").textContent =
+                    letter.title;
+                document.getElementById("letterModalBody").innerHTML = `
             <div class="text-center mb-3">
                 <span style="font-size: 3rem;">${letter.icon}</span>
             </div>
             <div class="letter-content">${letter.content}</div>
         `;
-        letterModal.show();
-    }
-    </script>
-</body>
+                letterModal.show();
+            }
+        </script>
+    </body>
 </html>
